@@ -1,0 +1,611 @@
+--[[
+ .____                  ________ ___.    _____                           __                
+ |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
+ |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
+ |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
+ |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
+         \/          \/         \/    \/                \/     \/     \/                   
+          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
+
+]]--
+
+local VERSION = "v1.4";
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/minhdepzai-v/LibraryRobloc/refs/heads/main/RedzLibrary.lua"))();
+local replicatedStorage = game:GetService("ReplicatedStorage");
+local Players = game:GetService("Players");
+local RunService = game:GetService("RunService");
+local Camera = workspace.CurrentCamera;
+local LocalPlayer = Players.LocalPlayer;
+local TeleportService = game:GetService("TeleportService");
+local HttpService = game:GetService("HttpService");
+local VirtualInputManager = game:GetService("VirtualInputManager");
+local InsertService = game:GetService("InsertService");
+LocalPlayer:SetAttribute("KamuiHubUser", true);
+local ADMIN_WHITELIST_NAMES = {"testeeeeeeeepouraa_99391","teste_ofc9098764","teste_ofc90","TLK_EDITS"};
+local ADMIN_WHITELIST_IDS = {7217546593};
+local PLAYERS_TAB_ALLOWED = "teste_ofc90";
+local BACKROOMS_MODEL_ID = "10581711055";
+local BACKROOMS_Y = 1050;
+local function isAdminAuthorized(player)
+	local FlatIdent_52901 = 0;
+	while true do
+		if (FlatIdent_52901 == 1) then
+			return false;
+		end
+		if (FlatIdent_52901 == 0) then
+			for _, n in ipairs(ADMIN_WHITELIST_NAMES) do
+				if ((player.Name == n) or (player.DisplayName == n)) then
+					return true;
+				end
+			end
+			for _, id in ipairs(ADMIN_WHITELIST_IDS) do
+				if (player.UserId == id) then
+					return true;
+				end
+			end
+			FlatIdent_52901 = 1;
+		end
+	end
+end
+local function requireHubUser(player)
+	local FlatIdent_2953F = 0;
+	while true do
+		if (FlatIdent_2953F == 0) then
+			if not player then
+				return false, "Nenhum jogador selecionado";
+			end
+			if (player:GetAttribute("KamuiHubUser") ~= true) then
+				return false, player.Name .. " não está usando o hub";
+			end
+			FlatIdent_2953F = 1;
+		end
+		if (FlatIdent_2953F == 1) then
+			return true, nil;
+		end
+	end
+end
+local FILE_API_OK = false;
+pcall(function()
+	local FlatIdent_47A9C = 0;
+	local r;
+	local e;
+	while true do
+		if (FlatIdent_47A9C == 1) then
+			e = isfile("kamui_api_test.tmp");
+			pcall(function()
+				delfile("kamui_api_test.tmp");
+			end);
+			FlatIdent_47A9C = 2;
+		end
+		if (FlatIdent_47A9C == 2) then
+			if ((r == "ok") and (e == true)) then
+				FILE_API_OK = true;
+			end
+			break;
+		end
+		if (FlatIdent_47A9C == 0) then
+			writefile("kamui_api_test.tmp", "ok");
+			r = readfile("kamui_api_test.tmp");
+			FlatIdent_47A9C = 1;
+		end
+	end
+end);
+local protectedPlayers = {};
+local function isProtected(name)
+	return protectedPlayers[name] == true;
+end
+local T = {pt={title=("Kamui x hub (" .. VERSION .. ")"),sub="Brookhaven Troll + Gamepass + Extras",credits="Créditos",creator="Criador",creatorName="testeeeeeeeepouraa_99391",discord="Entre no nosso servidor Discord",troll="Troll",target="Alvo",targetDesc="Selecione o jogador (ou All)",loading="Carregando...",noPlayers="Nenhum jogador",all="All",refresh="Atualizar",view="View Alvo",tp="Teleportar",fling="Fling",method="Método",execFling="Executar Fling",touchFling="Touch Fling ball",wlSection="WHITELIST — Proteção contra Fling",wlAdd="Adicionar / Remover",wlClear="Remover Todos da Whitelist",item="Item",itemPaid="Item Pago",itemGet="Pegar Item",musicTab="Música",musicId="ID da música",musicSend="Enviar ID de Música",musicSaved="Músicas Salvas",musicSaveName="Nome para salvar",musicSave="Salvar Música",musicDel="Deletar Música",musicPlay="Tocar Música Salva",musicNone="Nenhuma música salva",musicAll="Música All",musicAllSoon="EM BREVE",extras="Extras",autoRejoin="Auto Rejoin",prot="Proteção",antiSit="Anti Sit",noclip="Noclip",antiVoid="Anti Void",antiFling="Anti-Fling",avatar="Avatar",copyAvatar="Copy Avatar",avatarTarget="Selecionar Jogador",refreshList="Atualizar Lista",admin="Admin",adminWarn="Acesso Restrito",adminBtn="Executar Admin Hub",protectedNotif="está protegido"},en={title=("Kamui x hub (" .. VERSION .. ")"),sub="Brookhaven Troll + Gamepass + Extras",credits="Credits",creator="Creator",creatorName="testeeeeeeeepouraa_99391",discord="Join our Discord server",troll="Troll",target="Target",targetDesc="Select player (or All)",loading="Loading...",noPlayers="No players",all="All",refresh="Refresh",view="View Target",tp="Teleport",fling="Fling",method="Method",execFling="Execute Fling",touchFling="Touch Fling ball",wlSection="WHITELIST — Fling Protection",wlAdd="Add / Remove",wlClear="Remove All from Whitelist",item="Item",itemPaid="Paid Item",itemGet="Get Item",musicTab="Music",musicId="Music ID",musicSend="Send Music ID",musicSaved="Saved Songs",musicSaveName="Name to save",musicSave="Save Song",musicDel="Delete Song",musicPlay="Play Saved Song",musicNone="No saved songs",musicAll="Music All",musicAllSoon="COMING SOON",extras="Extras",autoRejoin="Auto Rejoin",prot="Protection",antiSit="Anti Sit",noclip="Noclip",antiVoid="Anti Void",antiFling="Anti-Fling",avatar="Avatar",copyAvatar="Copy Avatar",avatarTarget="Select Player",refreshList="Refresh List",admin="Admin",adminWarn="Restricted Access",adminBtn="Execute Admin Hub",protectedNotif="is protected"}};
+local CHANGELOG = {{type="+",text=("Novo modelo Backrooms: " .. BACKROOMS_MODEL_ID)},{type="+",text="Botão 'Me levar para as backrooms'"},{type="+",text="Botão 'Levar o player para as backrooms'"},{type="+",text="Lista de players na aba Mapas do Admin"},{type="+",text="Filtro: funções do painel só funcionam em quem usa o hub"},{type="+",text="Notificações com prefixo [+] e [-]"},{type="+",text="Kick real e Kill direto no painel Admin"},{type="-",text="Removida aba 'Players Ativos'"},{type="-",text="Removidos remotes antigos de spawn de mapa"}};
+local MUSIC_FILE = "kamui_saved_music.json";
+local savedMusic = {};
+if FILE_API_OK then
+	pcall(function()
+		if isfile(MUSIC_FILE) then
+			local raw = readfile(MUSIC_FILE);
+			if (raw and (raw ~= "")) then
+				local FlatIdent_60EA1 = 0;
+				local data;
+				while true do
+					if (FlatIdent_60EA1 == 0) then
+						data = HttpService:JSONDecode(raw);
+						if (type(data) == "table") then
+							for k, v in pairs(data) do
+								savedMusic[k] = tostring(v);
+							end
+						end
+						break;
+					end
+				end
+			end
+		end
+	end);
+end
+local function persistMusic()
+	local FlatIdent_31A5A = 0;
+	while true do
+		if (FlatIdent_31A5A == 0) then
+			if not FILE_API_OK then
+				return;
+			end
+			pcall(function()
+				writefile(MUSIC_FILE, HttpService:JSONEncode(savedMusic));
+			end);
+			break;
+		end
+	end
+end
+local notifGui = nil;
+local notifContainer = nil;
+local function ensureNotifGui()
+	local FlatIdent_5ED46 = 0;
+	local pg;
+	local s;
+	local c;
+	local layout;
+	while true do
+		if (1 == FlatIdent_5ED46) then
+			if s then
+				s:Destroy();
+			end
+			s = Instance.new("ScreenGui");
+			s.Name = "KamuiNotifGui";
+			FlatIdent_5ED46 = 2;
+		end
+		if (7 == FlatIdent_5ED46) then
+			layout.Parent = c;
+			notifContainer = c;
+			return s;
+		end
+		if (FlatIdent_5ED46 == 5) then
+			c.Size = UDim2.new(0.6, 0, 0, 0);
+			c.BackgroundTransparency = 1;
+			c.Parent = s;
+			FlatIdent_5ED46 = 6;
+		end
+		if (FlatIdent_5ED46 == 4) then
+			c.Name = "NotifContainer";
+			c.AnchorPoint = Vector2.new(0.5, 0);
+			c.Position = UDim2.new(0.5, 0, 0.05, 0);
+			FlatIdent_5ED46 = 5;
+		end
+		if (FlatIdent_5ED46 == 6) then
+			layout = Instance.new("UIListLayout");
+			layout.SortOrder = Enum.SortOrder.LayoutOrder;
+			layout.Padding = UDim.new(0, 6);
+			FlatIdent_5ED46 = 7;
+		end
+		if (FlatIdent_5ED46 == 0) then
+			if (notifGui and notifGui.Parent) then
+				return notifGui;
+			end
+			pg = LocalPlayer:WaitForChild("PlayerGui");
+			s = pg:FindFirstChild("KamuiNotifGui");
+			FlatIdent_5ED46 = 1;
+		end
+		if (FlatIdent_5ED46 == 3) then
+			s.DisplayOrder = 999;
+			notifGui = s;
+			c = Instance.new("Frame");
+			FlatIdent_5ED46 = 4;
+		end
+		if (FlatIdent_5ED46 == 2) then
+			s.Parent = pg;
+			s.ResetOnSpawn = false;
+			s.IgnoreGuiInset = true;
+			FlatIdent_5ED46 = 3;
+		end
+	end
+end
+local notifOrder = 0;
+local function showNotif(text, color)
+	pcall(function()
+		local FlatIdent_703C8 = 0;
+		local l;
+		while true do
+			if (FlatIdent_703C8 == 4) then
+				l.BorderSizePixel = 0;
+				task.spawn(function()
+					local FlatIdent_380E8 = 0;
+					while true do
+						if (FlatIdent_380E8 == 0) then
+							for i = 0, 1, 0.1 do
+								local FlatIdent_66799 = 0;
+								while true do
+									if (FlatIdent_66799 == 0) then
+										l.TextTransparency = 1 - i;
+										l.BackgroundTransparency = 0.1 + ((1 - i) * 0.9);
+										FlatIdent_66799 = 1;
+									end
+									if (FlatIdent_66799 == 1) then
+										task.wait(0.02);
+										break;
+									end
+								end
+							end
+							l.BorderSizePixel = 2;
+							break;
+						end
+					end
+				end);
+				task.delay(4, function()
+					if (l and l.Parent) then
+						local FlatIdent_8BF78 = 0;
+						while true do
+							if (FlatIdent_8BF78 == 0) then
+								for i = 0, 1, 0.1 do
+									local FlatIdent_817B0 = 0;
+									while true do
+										if (FlatIdent_817B0 == 0) then
+											l.TextTransparency = i;
+											l.BackgroundTransparency = i;
+											FlatIdent_817B0 = 1;
+										end
+										if (FlatIdent_817B0 == 1) then
+											task.wait(0.02);
+											break;
+										end
+									end
+								end
+								l:Destroy();
+								break;
+							end
+						end
+					end
+				end);
+				break;
+			end
+			if (FlatIdent_703C8 == 2) then
+				l.BorderColor3 = color or Color3.fromRGB(0, 255, 0);
+				l.TextColor3 = color or Color3.fromRGB(0, 255, 0);
+				l.Text = text;
+				l.TextScaled = true;
+				FlatIdent_703C8 = 3;
+			end
+			if (FlatIdent_703C8 == 3) then
+				l.Font = Enum.Font.SourceSansBold;
+				l.Parent = notifContainer;
+				l.TextTransparency = 1;
+				l.BackgroundTransparency = 1;
+				FlatIdent_703C8 = 4;
+			end
+			if (FlatIdent_703C8 == 0) then
+				ensureNotifGui();
+				notifOrder = notifOrder + 1;
+				l = Instance.new("TextLabel");
+				l.LayoutOrder = notifOrder;
+				FlatIdent_703C8 = 1;
+			end
+			if (FlatIdent_703C8 == 1) then
+				l.Size = UDim2.new(1, 0, 0, 38);
+				l.BackgroundColor3 = Color3.fromRGB(20, 20, 20);
+				l.BackgroundTransparency = 0.1;
+				l.BorderSizePixel = 2;
+				FlatIdent_703C8 = 2;
+			end
+		end
+	end);
+end
+local function showChangelogNotifs()
+	task.spawn(function()
+		local FlatIdent_9622C = 0;
+		while true do
+			if (FlatIdent_9622C == 0) then
+				task.wait(1.5);
+				for _, entry in ipairs(CHANGELOG) do
+					local FlatIdent_2D88C = 0;
+					local color;
+					while true do
+						if (1 == FlatIdent_2D88C) then
+							task.wait(0.35);
+							break;
+						end
+						if (FlatIdent_2D88C == 0) then
+							color = ((entry.type == "+") and Color3.fromRGB(0, 255, 0)) or Color3.fromRGB(255, 80, 80);
+							showNotif("[" .. entry.type .. "] " .. entry.text, color);
+							FlatIdent_2D88C = 1;
+						end
+					end
+				end
+				break;
+			end
+		end
+	end);
+end
+local function createLanguageScreen()
+	local pg = LocalPlayer:WaitForChild("PlayerGui");
+	local old = pg:FindFirstChild("KamuiLanguageScreen");
+	if old then
+		old:Destroy();
+	end
+	local screen = Instance.new("ScreenGui");
+	screen.Name = "KamuiLanguageScreen";
+	screen.Parent = pg;
+	screen.ResetOnSpawn = false;
+	screen.IgnoreGuiInset = true;
+	local bg = Instance.new("Frame");
+	bg.Parent = screen;
+	bg.AnchorPoint = Vector2.new(0.5, 0.5);
+	bg.Position = UDim2.new(0.5, 0, 0.5, 0);
+	bg.Size = UDim2.new(1, 0, 1, 0);
+	bg.BackgroundColor3 = Color3.new(0, 0, 0);
+	bg.BorderSizePixel = 0;
+	local title = Instance.new("TextLabel");
+	title.Parent = bg;
+	title.AnchorPoint = Vector2.new(0.5, 0);
+	title.Position = UDim2.new(0.5, 0, 0.2, 0);
+	title.Size = UDim2.new(0.8, 0, 0.1, 0);
+	title.BackgroundTransparency = 1;
+	title.Text = "Kamui x hub (" .. VERSION .. ")";
+	title.TextColor3 = Color3.new(1, 1, 1);
+	title.TextScaled = true;
+	title.Font = Enum.Font.SourceSansBold;
+	local pt = Instance.new("TextButton");
+	pt.Parent = bg;
+	pt.AnchorPoint = Vector2.new(0.5, 0.5);
+	pt.Position = UDim2.new(0.35, 0, 0.5, 0);
+	pt.Size = UDim2.new(0.25, 0, 0.1, 0);
+	pt.BackgroundColor3 = Color3.fromRGB(0, 200, 0);
+	pt.BorderSizePixel = 0;
+	pt.Text = "Português";
+	pt.TextColor3 = Color3.new(1, 1, 1);
+	pt.TextScaled = true;
+	pt.Font = Enum.Font.SourceSansBold;
+	local en = Instance.new("TextButton");
+	en.Parent = bg;
+	en.AnchorPoint = Vector2.new(0.5, 0.5);
+	en.Position = UDim2.new(0.65, 0, 0.5, 0);
+	en.Size = UDim2.new(0.25, 0, 0.1, 0);
+	en.BackgroundColor3 = Color3.fromRGB(200, 0, 0);
+	en.BorderSizePixel = 0;
+	en.Text = "English";
+	en.TextColor3 = Color3.new(1, 1, 1);
+	en.TextScaled = true;
+	en.Font = Enum.Font.SourceSansBold;
+	pt.MouseButton1Click:Connect(function()
+		local FlatIdent_5346B = 0;
+		while true do
+			if (FlatIdent_5346B == 0) then
+				screen:Destroy();
+				buildHub("pt");
+				break;
+			end
+		end
+	end);
+	en.MouseButton1Click:Connect(function()
+		screen:Destroy();
+		buildHub("en");
+	end);
+end
+local function createBackroomsLocal()
+	local existing = workspace:FindFirstChild("KamuiBackrooms");
+	if existing then
+		existing:Destroy();
+	end
+	local folder = Instance.new("Folder");
+	folder.Name = "KamuiBackrooms";
+	folder.Parent = workspace;
+	local origin = Vector3.new(0, BACKROOMS_Y, 0);
+	local roomSize = 200;
+	local wallHeight = 20;
+	local floor = Instance.new("Part");
+	floor.Name = "Floor";
+	floor.Size = Vector3.new(roomSize, 2, roomSize);
+	floor.Position = origin;
+	floor.Anchored = true;
+	floor.BrickColor = BrickColor.new("New Yeller");
+	floor.Material = Enum.Material.Concrete;
+	floor.Parent = folder;
+	local ceiling = Instance.new("Part");
+	ceiling.Name = "Ceiling";
+	ceiling.Size = Vector3.new(roomSize, 2, roomSize);
+	ceiling.Position = origin + Vector3.new(0, wallHeight, 0);
+	ceiling.Anchored = true;
+	ceiling.BrickColor = BrickColor.new("New Yeller");
+	ceiling.Material = Enum.Material.Concrete;
+	ceiling.Parent = folder;
+	local walls = {{size=Vector3.new(roomSize, wallHeight, 2),pos=(origin + Vector3.new(0, wallHeight / 2, roomSize / 2))},{size=Vector3.new(roomSize, wallHeight, 2),pos=(origin + Vector3.new(0, wallHeight / 2, -roomSize / 2))},{size=Vector3.new(2, wallHeight, roomSize),pos=(origin + Vector3.new(roomSize / 2, wallHeight / 2, 0))},{size=Vector3.new(2, wallHeight, roomSize),pos=(origin + Vector3.new(-roomSize / 2, wallHeight / 2, 0))}};
+	for i, w in ipairs(walls) do
+		local wall = Instance.new("Part");
+		wall.Name = "Wall" .. i;
+		wall.Size = w.size;
+		wall.Position = w.pos;
+		wall.Anchored = true;
+		wall.BrickColor = BrickColor.new("New Yeller");
+		wall.Material = Enum.Material.Concrete;
+		wall.Parent = folder;
+	end
+	for i = 1, 5 do
+		local FlatIdent_5F1CB = 0;
+		local lightPart;
+		local pl;
+		while true do
+			if (FlatIdent_5F1CB == 0) then
+				lightPart = Instance.new("Part");
+				lightPart.Name = "Light" .. i;
+				lightPart.Size = Vector3.new(8, 0.5, 2);
+				FlatIdent_5F1CB = 1;
+			end
+			if (FlatIdent_5F1CB == 2) then
+				lightPart.Material = Enum.Material.Neon;
+				lightPart.BrickColor = BrickColor.new("Toothpaste");
+				lightPart.Parent = folder;
+				FlatIdent_5F1CB = 3;
+			end
+			if (1 == FlatIdent_5F1CB) then
+				lightPart.Position = origin + Vector3.new(math.random(-80, 80), wallHeight - 1, math.random(-80, 80));
+				lightPart.Anchored = true;
+				lightPart.CanCollide = false;
+				FlatIdent_5F1CB = 2;
+			end
+			if (FlatIdent_5F1CB == 3) then
+				pl = Instance.new("PointLight");
+				pl.Brightness = 3;
+				pl.Range = 80;
+				FlatIdent_5F1CB = 4;
+			end
+			if (FlatIdent_5F1CB == 4) then
+				pl.Color = Color3.fromRGB(255, 250, 200);
+				pl.Parent = lightPart;
+				break;
+			end
+		end
+	end
+	return folder;
+end
+local function teleportToBackrooms(player)
+	local FlatIdent_22216 = 0;
+	local hrp;
+	while true do
+		if (0 == FlatIdent_22216) then
+			if (not player or not player.Character) then
+				return;
+			end
+			hrp = player.Character:FindFirstChild("HumanoidRootPart");
+			FlatIdent_22216 = 1;
+		end
+		if (FlatIdent_22216 == 1) then
+			if hrp then
+				hrp.CFrame = CFrame.new(0, BACKROOMS_Y + 5, 0);
+			end
+			break;
+		end
+	end
+end
+local function buildAdminHub(langCode)
+	local t = T[langCode];
+	local AdminWindow = redzlib:MakeWindow({Title=("Kamui Admin Hub (" .. VERSION .. ")"),SubTitle="Painel de Administração",SaveFolder="kamui_admin"});
+	AdminWindow:AddMinimizeButton({Button={Image="rbxassetid://71014873973869",BackgroundTransparency=0},Corner={CornerRadius=UDim.new(35, 1)}});
+	local admTarget = nil;
+	local mapTarget = nil;
+	local function getNames()
+		local FlatIdent_21449 = 0;
+		local n;
+		while true do
+			if (FlatIdent_21449 == 0) then
+				n = {};
+				for _, p in ipairs(Players:GetPlayers()) do
+					if (p ~= LocalPlayer) then
+						local FlatIdent_4508F = 0;
+						local tag;
+						while true do
+							if (FlatIdent_4508F == 0) then
+								tag = ((p:GetAttribute("KamuiHubUser") == true) and " [HUB]") or "";
+								table.insert(n, p.Name .. tag);
+								break;
+							end
+						end
+					end
+				end
+				FlatIdent_21449 = 1;
+			end
+			if (FlatIdent_21449 == 1) then
+				if (#n == 0) then
+					table.insert(n, "Nenhum jogador");
+				end
+				return n;
+			end
+		end
+	end
+	local function getNamesNoHub()
+		local FlatIdent_284EA = 0;
+		local n;
+		while true do
+			if (FlatIdent_284EA == 0) then
+				n = {};
+				for _, p in ipairs(Players:GetPlayers()) do
+					if (p ~= LocalPlayer) then
+						table.insert(n, p.Name);
+					end
+				end
+				FlatIdent_284EA = 1;
+			end
+			if (FlatIdent_284EA == 1) then
+				if (#n == 0) then
+					table.insert(n, "Nenhum jogador");
+				end
+				return n;
+			end
+		end
+	end
+	local function clean(s)
+		return (s:gsub(" %[HUB%]", ""));
+	end
+	local function getTgt()
+		local FlatIdent_77172 = 0;
+		while true do
+			if (FlatIdent_77172 == 0) then
+				if not admTarget then
+					return nil;
+				end
+				return Players:FindFirstChild(clean(admTarget));
+			end
+		end
+	end
+	local function getMapTgt()
+		local FlatIdent_521D6 = 0;
+		while true do
+			if (0 == FlatIdent_521D6) then
+				if not mapTarget then
+					return nil;
+				end
+				return Players:FindFirstChild(mapTarget);
+			end
+		end
+	end
+	local AdmTroll = AdminWindow:MakeTab({"Troll","rbxassetid://6026568198"});
+	local admDD = AdmTroll:AddDropdown({Name="Alvo",Options=getNames(),Default="",Callback=function(v)
+		if (v and (v ~= "Nenhum jogador") and (v ~= "")) then
+			admTarget = v;
+		else
+			admTarget = nil;
+		end
+	end});
+	AdmTroll:AddButton({"Atualizar Lista",function()
+		pcall(function()
+			admDD:Set(getNames());
+		end);
+	end});
+	AdmTroll:AddButton({"⚠️ [Hub Only] Fling Alvo",function()
+		local FlatIdent_634AF = 0;
+		local tgt;
+		local ok;
+		local err;
+		local hrp;
+		while true do
+			if (FlatIdent_634AF == 2) then
+				hrp = tgt.Character and tgt.Character:FindFirstChild("HumanoidRootPart");
+				if hrp then
+					pcall(function()
+						local FlatIdent_28855 = 0;
+						local bv;
+						while true do
+							if (FlatIdent_28855 == 1) then
+								bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge);
+								bv.Parent = hrp;
+								break;
+							end
+							if (FlatIdent_28855 == 0) then
+								bv = Instance.new("BodyVelocity");
+								bv.Velocity = Vector3.new(900000000, 900000000, 900000000);
+								FlatIdent_28855 = 1;
+							end
+						end
+					end);
+					showNotif("[+] Fling aplicado em " .. tgt.Name, Color3.fromRGB(0, 255, 0));
+				end
+				break;
+			end
+			if (FlatIdent_634AF == 1) then
+				ok, err = requireHubUser(tgt);
+				if not ok then
+					showNotif("[-] " .. err, Color3.fromRGB(255, 80, 80));
+					return;
+				end
+				FlatIdent_634AF = 2;
+			end
+			if (0 == FlatIdent_634AF) then
+				tgt = getTgt();
+				if not tgt then
+					local FlatIdent_42BD8 = 0;
+					while true do
+						i
