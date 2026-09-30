@@ -1,611 +1,447 @@
+--[[ obfuscated @ discord.gg/25ms ]] -- This file is protected by goofyscator V8.1 >> goofyscator.lua.cz <<
 --[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
-
+    __  __      ___   __  __  _   _  ___ 
+   / / / /___  /   | / / / / | | | ||_ _|
+  / /_/ / __ \/ /| |/ / / /  | | | | | | 
+ / __  / /_/ / ___ / /_/ /   | |_| | | | 
+/_/ /_/\____/_/  |_\____/     \___/ |___|
+        OBFUSCATED BUILD v1.4
+        Discord: discord.gg/25ms
+        Tool: goofyscator V8.1
+        Date: 2026
 ]]--
 
-local VERSION = "v1.4";
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/minhdepzai-v/LibraryRobloc/refs/heads/main/RedzLibrary.lua"))();
-local replicatedStorage = game:GetService("ReplicatedStorage");
-local Players = game:GetService("Players");
-local RunService = game:GetService("RunService");
-local Camera = workspace.CurrentCamera;
-local LocalPlayer = Players.LocalPlayer;
-local TeleportService = game:GetService("TeleportService");
-local HttpService = game:GetService("HttpService");
-local VirtualInputManager = game:GetService("VirtualInputManager");
-local InsertService = game:GetService("InsertService");
-LocalPlayer:SetAttribute("KamuiHubUser", true);
-local ADMIN_WHITELIST_NAMES = {"testeeeeeeeepouraa_99391","teste_ofc9098764","teste_ofc90","TLK_EDITS"};
-local ADMIN_WHITELIST_IDS = {7217546593};
-local PLAYERS_TAB_ALLOWED = "teste_ofc90";
-local BACKROOMS_MODEL_ID = "10581711055";
-local BACKROOMS_Y = 1050;
-local function isAdminAuthorized(player)
-	local FlatIdent_52901 = 0;
-	while true do
-		if (FlatIdent_52901 == 1) then
-			return false;
-		end
-		if (FlatIdent_52901 == 0) then
-			for _, n in ipairs(ADMIN_WHITELIST_NAMES) do
-				if ((player.Name == n) or (player.DisplayName == n)) then
-					return true;
-				end
-			end
-			for _, id in ipairs(ADMIN_WHITELIST_IDS) do
-				if (player.UserId == id) then
-					return true;
-				end
-			end
-			FlatIdent_52901 = 1;
-		end
-	end
+local _0xA1 = "v1.4"
+local _0xA2 = loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\109\105\110\104\100\101\112\122\97\105\45\118\47\76\105\98\114\97\114\121\82\111\98\108\111\99\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\82\101\100\122\76\105\98\114\97\114\121\46\108\117\97"))()
+
+local _0xB1 = game:GetService("ReplicatedStorage")
+local _0xB2 = game:GetService("Players")
+local _0xB3 = game:GetService("RunService")
+local _0xB4 = workspace.CurrentCamera
+local _0xB5 = _0xB2.LocalPlayer
+local _0xB6 = game:GetService("TeleportService")
+local _0xB7 = game:GetService("HttpService")
+local _0xB8 = game:GetService("VirtualInputManager")
+
+_0xB5:SetAttribute("\75\97\109\117\105\72\117\98\85\115\101\114", true)
+
+local _0xC1 = { "\116\101\115\116\101\101\101\101\101\101\101\101\101\112\111\117\114\97\97\95\57\57\51\57\49", "\116\101\115\116\101\95\111\102\99\57\48\57\56\55\54\52", "\116\101\115\116\101\95\111\102\99\57\48", "\84\76\75\95\69\68\73\84\83" }
+local _0xC2 = { 7217546593 }
+local _0xC3 = "\116\101\115\116\101\95\111\102\99\57\48"
+local _0xC4 = "\49\48\53\56\49\55\49\49\48\53\53"
+local _0xC5 = 0x41A
+
+local function _0xD1(_0xP1)
+    for _, _0xn in ipairs(_0xC1) do
+        if _0xP1.Name == _0xn or _0xP1.DisplayName == _0xn then return true end
+    end
+    for _, _0xi in ipairs(_0xC2) do
+        if _0xP1.UserId == _0xi then return true end
+    end
+    return false
 end
-local function requireHubUser(player)
-	local FlatIdent_2953F = 0;
-	while true do
-		if (FlatIdent_2953F == 0) then
-			if not player then
-				return false, "Nenhum jogador selecionado";
-			end
-			if (player:GetAttribute("KamuiHubUser") ~= true) then
-				return false, player.Name .. " não está usando o hub";
-			end
-			FlatIdent_2953F = 1;
-		end
-		if (FlatIdent_2953F == 1) then
-			return true, nil;
-		end
-	end
+
+local function _0xD2(_0xP1)
+    if not _0xP1 then return false, "\78\101\110\104\117\109\32\106\111\103\97\100\111\114\32\115\101\108\101\99\105\111\110\97\100\111" end
+    if _0xP1:GetAttribute("\75\97\109\117\105\72\117\98\85\115\101\114") ~= true then
+        return false, _0xP1.Name .. " \110\195\181\111\32\101\115\116\195\161\32\117\115\97\110\100\111\32\111\32\104\117\98"
+    end
+    return true, nil
 end
-local FILE_API_OK = false;
+
+local _0xE1 = false
 pcall(function()
-	local FlatIdent_47A9C = 0;
-	local r;
-	local e;
-	while true do
-		if (FlatIdent_47A9C == 1) then
-			e = isfile("kamui_api_test.tmp");
-			pcall(function()
-				delfile("kamui_api_test.tmp");
-			end);
-			FlatIdent_47A9C = 2;
-		end
-		if (FlatIdent_47A9C == 2) then
-			if ((r == "ok") and (e == true)) then
-				FILE_API_OK = true;
-			end
-			break;
-		end
-		if (FlatIdent_47A9C == 0) then
-			writefile("kamui_api_test.tmp", "ok");
-			r = readfile("kamui_api_test.tmp");
-			FlatIdent_47A9C = 1;
-		end
-	end
-end);
-local protectedPlayers = {};
-local function isProtected(name)
-	return protectedPlayers[name] == true;
+    writefile("\107\97\109\117\105\95\97\112\105\95\116\101\115\116\46\116\109\112", "ok")
+    local _0xr = readfile("\107\97\109\117\105\95\97\112\105\95\116\101\115\116\46\116\109\112")
+    local _0xe = isfile("\107\97\109\117\105\95\97\112\105\95\116\101\115\116\46\116\109\112")
+    pcall(function() delfile("\107\97\109\117\105\95\97\112\105\95\116\101\115\116\46\116\109\112") end)
+    if _0xr == "ok" and _0xe == true then _0xE1 = true end
+end)
+
+local _0xF1 = {}
+local function _0xF2(_0xn) return _0xF1[_0xn] == true end
+
+local _0xG1 = {
+    pt = {
+        title = "\75\97\109\117\105\32\120\32\104\117\98\32\40" .. _0xA1 .. "\41", sub = "\66\114\111\111\107\104\97\118\101\110\32\84\114\111\108\108\32\43\32\71\97\109\101\112\97\115\115\32\43\32\69\120\116\114\97\115",
+        credits = "\67\114\195\169\100\105\116\111\115", creator = "\67\114\105\97\100\111\114", creatorName = "\116\101\115\116\101\101\101\101\101\101\101\101\101\112\111\117\114\97\97\95\57\57\51\57\49",
+        discord = "\69\110\116\114\101\32\110\111\32\110\111\115\115\111\32\115\101\114\118\105\100\111\114\32\68\105\115\99\111\114\100",
+        troll = "\84\114\111\108\108", target = "\65\108\118\111", targetDesc = "\83\101\108\101\99\105\111\110\101\32\111\32\106\111\103\97\100\111\114\32\40\111\117\32\65\108\108\41",
+        loading = "\67\97\114\114\101\103\97\110\100\111\46\46\46", noPlayers = "\78\101\110\104\117\109\32\106\111\103\97\100\111\114", all = "\65\108\108",
+        refresh = "\65\116\117\97\108\105\122\97\114", view = "\86\105\101\119\32\65\108\118\111", tp = "\84\101\108\101\112\111\114\116\97\114",
+        fling = "\70\108\105\110\103", method = "\77\195\169\116\111\100\111", execFling = "\69\120\101\99\117\116\97\114\32\70\108\105\110\103", touchFling = "\84\111\117\99\104\32\70\108\105\110\103\32\98\97\108\108",
+        wlSection = "\87\72\73\84\69\76\73\83\84\32\226\128\148\32\80\114\111\116\101\195\167\195\163\111\32\99\111\110\116\114\97\32\70\108\105\110\103", wlAdd = "\65\100\105\99\105\111\110\97\114\32\47\32\82\101\109\111\118\101\114", wlClear = "\82\101\109\111\118\101\114\32\84\111\100\111\115\32\100\97\32\87\104\105\116\101\108\105\115\116",
+        item = "\73\116\101\109", itemPaid = "\73\116\101\109\32\80\97\103\111", itemGet = "\80\101\103\97\114\32\73\116\101\109",
+        musicTab = "\77\195\186\115\105\99\97", musicId = "\73\68\32\100\97\32\109\195\186\115\105\99\97", musicSend = "\69\110\118\105\97\114\32\73\68\32\100\101\32\77\195\186\115\105\99\97",
+        musicSaved = "\77\195\186\115\105\99\97\115\32\83\97\108\118\97\115", musicSaveName = "\78\111\109\101\32\112\97\114\97\32\115\97\108\118\97\114", musicSave = "\83\97\108\118\97\114\32\77\195\186\115\105\99\97",
+        musicDel = "\68\101\108\101\116\97\114\32\77\195\186\115\105\99\97", musicPlay = "\84\111\99\97\114\32\77\195\186\115\105\99\97\32\83\97\108\118\97", musicNone = "\78\101\110\104\117\109\97\32\109\195\186\115\105\99\97\32\115\97\108\118\97",
+        musicAll = "\77\195\186\115\105\99\97\32\65\108\108", musicAllSoon = "\69\77\32\66\82\69\86\69",
+        extras = "\69\120\116\114\97\115",
+        autoRejoin = "\65\117\116\111\32\82\101\106\111\105\110",
+        prot = "\80\114\111\116\101\195\167\195\163\111", antiSit = "\65\110\116\105\32\83\105\116", noclip = "\78\111\99\108\105\112", antiVoid = "\65\110\116\105\32\86\111\105\100", antiFling = "\65\110\116\105\45\70\108\105\110\103",
+        avatar = "\65\118\97\116\97\114", copyAvatar = "\67\111\112\121\32\65\118\97\116\97\114", avatarTarget = "\83\101\108\101\99\105\111\110\97\114\32\74\111\103\97\100\111\114", refreshList = "\65\116\117\97\108\105\122\97\114\32\76\105\115\116\97",
+        admin = "\65\100\109\105\110", adminWarn = "\65\99\101\115\115\111\32\82\101\115\116\114\105\116\111", adminBtn = "\69\120\101\99\117\116\97\114\32\65\100\109\105\110\32\72\117\98",
+        protectedNotif = "\101\115\116\195\161\32\112\114\111\116\101\103\105\100\111"
+    },
+    en = {
+        title = "\75\97\109\117\105\32\120\32\104\117\98\32\40" .. _0xA1 .. "\41", sub = "\66\114\111\111\107\104\97\118\101\110\32\84\114\111\108\108\32\43\32\71\97\109\101\112\97\115\115\32\43\32\69\120\116\114\97\115",
+        credits = "Credits", creator = "Creator", creatorName = "testeeeeeeeepouraa_99391",
+        discord = "Join our Discord server",
+        troll = "Troll", target = "Target", targetDesc = "Select player (or All)",
+        loading = "Loading...", noPlayers = "No players", all = "All",
+        refresh = "Refresh", view = "View Target", tp = "Teleport",
+        fling = "Fling", method = "Method", execFling = "Execute Fling", touchFling = "Touch Fling ball",
+        wlSection = "WHITELIST", wlAdd = "Add / Remove", wlClear = "Remove All from Whitelist",
+        item = "Item", itemPaid = "Paid Item", itemGet = "Get Item",
+        musicTab = "Music", musicId = "Music ID", musicSend = "Send Music ID",
+        musicSaved = "Saved Songs", musicSaveName = "Name to save", musicSave = "Save Song",
+        musicDel = "Delete Song", musicPlay = "Play Saved Song", musicNone = "No saved songs",
+        musicAll = "Music All", musicAllSoon = "COMING SOON",
+        extras = "Extras", autoRejoin = "Auto Rejoin",
+        prot = "Protection", antiSit = "Anti Sit", noclip = "Noclip", antiVoid = "Anti Void", antiFling = "Anti-Fling",
+        avatar = "Avatar", copyAvatar = "Copy Avatar", avatarTarget = "Select Player", refreshList = "Refresh List",
+        admin = "Admin", adminWarn = "Restricted Access", adminBtn = "Execute Admin Hub",
+        protectedNotif = "is protected"
+    }
+}
+
+local _0xH1 = {
+    { type = "+", text = "\66\111\116\195\163\111\32\77\101\116\101\111\114\111\115" },
+    { type = "+", text = "\77\97\110\100\97\114\32\77\101\110\115\97\103\101\109" },
+    { type = "+", text = "\84\97\103\32\91\85\83\85\195\129\82\73\79\93\32\47\32\91\65\68\77\73\78\93" },
+    { type = "+", text = "\67\114\97\115\104\97\114\32\80\108\97\121\101\114" },
+}
+
+local _0xI1 = "\107\97\109\117\105\95\115\97\118\101\100\95\109\117\115\105\99\46\106\115\111\110"
+local _0xI2 = {}
+if _0xE1 then
+    pcall(function()
+        if isfile(_0xI1) then
+            local _0xr = readfile(_0xI1)
+            if _0xr and _0xr ~= "" then
+                local _0xd = _0xB7:JSONDecode(_0xr)
+                if type(_0xd) == "table" then
+                    for _0xk, _0xv in pairs(_0xd) do _0xI2[_0xk] = tostring(_0xv) end
+                end
+            end
+        end
+    end)
 end
-local T = {pt={title=("Kamui x hub (" .. VERSION .. ")"),sub="Brookhaven Troll + Gamepass + Extras",credits="Créditos",creator="Criador",creatorName="testeeeeeeeepouraa_99391",discord="Entre no nosso servidor Discord",troll="Troll",target="Alvo",targetDesc="Selecione o jogador (ou All)",loading="Carregando...",noPlayers="Nenhum jogador",all="All",refresh="Atualizar",view="View Alvo",tp="Teleportar",fling="Fling",method="Método",execFling="Executar Fling",touchFling="Touch Fling ball",wlSection="WHITELIST — Proteção contra Fling",wlAdd="Adicionar / Remover",wlClear="Remover Todos da Whitelist",item="Item",itemPaid="Item Pago",itemGet="Pegar Item",musicTab="Música",musicId="ID da música",musicSend="Enviar ID de Música",musicSaved="Músicas Salvas",musicSaveName="Nome para salvar",musicSave="Salvar Música",musicDel="Deletar Música",musicPlay="Tocar Música Salva",musicNone="Nenhuma música salva",musicAll="Música All",musicAllSoon="EM BREVE",extras="Extras",autoRejoin="Auto Rejoin",prot="Proteção",antiSit="Anti Sit",noclip="Noclip",antiVoid="Anti Void",antiFling="Anti-Fling",avatar="Avatar",copyAvatar="Copy Avatar",avatarTarget="Selecionar Jogador",refreshList="Atualizar Lista",admin="Admin",adminWarn="Acesso Restrito",adminBtn="Executar Admin Hub",protectedNotif="está protegido"},en={title=("Kamui x hub (" .. VERSION .. ")"),sub="Brookhaven Troll + Gamepass + Extras",credits="Credits",creator="Creator",creatorName="testeeeeeeeepouraa_99391",discord="Join our Discord server",troll="Troll",target="Target",targetDesc="Select player (or All)",loading="Loading...",noPlayers="No players",all="All",refresh="Refresh",view="View Target",tp="Teleport",fling="Fling",method="Method",execFling="Execute Fling",touchFling="Touch Fling ball",wlSection="WHITELIST — Fling Protection",wlAdd="Add / Remove",wlClear="Remove All from Whitelist",item="Item",itemPaid="Paid Item",itemGet="Get Item",musicTab="Music",musicId="Music ID",musicSend="Send Music ID",musicSaved="Saved Songs",musicSaveName="Name to save",musicSave="Save Song",musicDel="Delete Song",musicPlay="Play Saved Song",musicNone="No saved songs",musicAll="Music All",musicAllSoon="COMING SOON",extras="Extras",autoRejoin="Auto Rejoin",prot="Protection",antiSit="Anti Sit",noclip="Noclip",antiVoid="Anti Void",antiFling="Anti-Fling",avatar="Avatar",copyAvatar="Copy Avatar",avatarTarget="Select Player",refreshList="Refresh List",admin="Admin",adminWarn="Restricted Access",adminBtn="Execute Admin Hub",protectedNotif="is protected"}};
-local CHANGELOG = {{type="+",text=("Novo modelo Backrooms: " .. BACKROOMS_MODEL_ID)},{type="+",text="Botão 'Me levar para as backrooms'"},{type="+",text="Botão 'Levar o player para as backrooms'"},{type="+",text="Lista de players na aba Mapas do Admin"},{type="+",text="Filtro: funções do painel só funcionam em quem usa o hub"},{type="+",text="Notificações com prefixo [+] e [-]"},{type="+",text="Kick real e Kill direto no painel Admin"},{type="-",text="Removida aba 'Players Ativos'"},{type="-",text="Removidos remotes antigos de spawn de mapa"}};
-local MUSIC_FILE = "kamui_saved_music.json";
-local savedMusic = {};
-if FILE_API_OK then
-	pcall(function()
-		if isfile(MUSIC_FILE) then
-			local raw = readfile(MUSIC_FILE);
-			if (raw and (raw ~= "")) then
-				local FlatIdent_60EA1 = 0;
-				local data;
-				while true do
-					if (FlatIdent_60EA1 == 0) then
-						data = HttpService:JSONDecode(raw);
-						if (type(data) == "table") then
-							for k, v in pairs(data) do
-								savedMusic[k] = tostring(v);
-							end
-						end
-						break;
-					end
-				end
-			end
-		end
-	end);
+local function _0xI3()
+    if not _0xE1 then return end
+    pcall(function() writefile(_0xI1, _0xB7:JSONEncode(_0xI2)) end)
 end
-local function persistMusic()
-	local FlatIdent_31A5A = 0;
-	while true do
-		if (FlatIdent_31A5A == 0) then
-			if not FILE_API_OK then
-				return;
-			end
-			pcall(function()
-				writefile(MUSIC_FILE, HttpService:JSONEncode(savedMusic));
-			end);
-			break;
-		end
-	end
+
+local _0xJ1 = nil
+local _0xJ2 = nil
+
+local function _0xJ3()
+    if _0xJ1 and _0xJ1.Parent then return _0xJ1 end
+    local _0xpg = _0xB5:WaitForChild("PlayerGui")
+    local _0xs = _0xpg:FindFirstChild("\75\97\109\117\105\78\111\116\105\102\71\117\105")
+    if _0xs then _0xs:Destroy() end
+    _0xs = Instance.new("ScreenGui")
+    _0xs.Name = "\75\97\109\117\105\78\111\116\105\102\71\117\105"
+    _0xs.Parent = _0xpg
+    _0xs.ResetOnSpawn = false
+    _0xs.IgnoreGuiInset = true
+    _0xs.DisplayOrder = 999
+    _0xJ1 = _0xs
+    local _0xc = Instance.new("Frame")
+    _0xc.Name = "\78\111\116\105\102\67\111\110\116\97\105\110\101\114"
+    _0xc.AnchorPoint = Vector2.new(0.5, 0)
+    _0xc.Position = UDim2.new(0.5, 0, 0.05, 0)
+    _0xc.Size = UDim2.new(0.6, 0, 0, 0)
+    _0xc.BackgroundTransparency = 1
+    _0xc.Parent = _0xs
+    local _0xl = Instance.new("UIListLayout")
+    _0xl.SortOrder = Enum.SortOrder.LayoutOrder
+    _0xl.Padding = UDim.new(0, 6)
+    _0xl.Parent = _0xc
+    _0xJ2 = _0xc
+    return _0xs
 end
-local notifGui = nil;
-local notifContainer = nil;
-local function ensureNotifGui()
-	local FlatIdent_5ED46 = 0;
-	local pg;
-	local s;
-	local c;
-	local layout;
-	while true do
-		if (1 == FlatIdent_5ED46) then
-			if s then
-				s:Destroy();
-			end
-			s = Instance.new("ScreenGui");
-			s.Name = "KamuiNotifGui";
-			FlatIdent_5ED46 = 2;
-		end
-		if (7 == FlatIdent_5ED46) then
-			layout.Parent = c;
-			notifContainer = c;
-			return s;
-		end
-		if (FlatIdent_5ED46 == 5) then
-			c.Size = UDim2.new(0.6, 0, 0, 0);
-			c.BackgroundTransparency = 1;
-			c.Parent = s;
-			FlatIdent_5ED46 = 6;
-		end
-		if (FlatIdent_5ED46 == 4) then
-			c.Name = "NotifContainer";
-			c.AnchorPoint = Vector2.new(0.5, 0);
-			c.Position = UDim2.new(0.5, 0, 0.05, 0);
-			FlatIdent_5ED46 = 5;
-		end
-		if (FlatIdent_5ED46 == 6) then
-			layout = Instance.new("UIListLayout");
-			layout.SortOrder = Enum.SortOrder.LayoutOrder;
-			layout.Padding = UDim.new(0, 6);
-			FlatIdent_5ED46 = 7;
-		end
-		if (FlatIdent_5ED46 == 0) then
-			if (notifGui and notifGui.Parent) then
-				return notifGui;
-			end
-			pg = LocalPlayer:WaitForChild("PlayerGui");
-			s = pg:FindFirstChild("KamuiNotifGui");
-			FlatIdent_5ED46 = 1;
-		end
-		if (FlatIdent_5ED46 == 3) then
-			s.DisplayOrder = 999;
-			notifGui = s;
-			c = Instance.new("Frame");
-			FlatIdent_5ED46 = 4;
-		end
-		if (FlatIdent_5ED46 == 2) then
-			s.Parent = pg;
-			s.ResetOnSpawn = false;
-			s.IgnoreGuiInset = true;
-			FlatIdent_5ED46 = 3;
-		end
-	end
+
+local _0xJ4 = 0
+local function _0xJ5(_0xt, _0xc)
+    pcall(function()
+        _0xJ3()
+        _0xJ4 = _0xJ4 + 1
+        local _0xl = Instance.new("TextLabel")
+        _0xl.LayoutOrder = _0xJ4
+        _0xl.Size = UDim2.new(1, 0, 0, 38)
+        _0xl.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+        _0xl.BackgroundTransparency = 0.1
+        _0xl.BorderSizePixel = 2
+        _0xl.BorderColor3 = _0xc or Color3.fromRGB(0, 255, 0)
+        _0xl.TextColor3 = _0xc or Color3.fromRGB(0, 255, 0)
+        _0xl.Text = _0xt
+        _0xl.TextScaled = true
+        _0xl.Font = Enum.Font.SourceSansBold
+        _0xl.Parent = _0xJ2
+        _0xl.TextTransparency = 1
+        _0xl.BackgroundTransparency = 1
+        _0xl.BorderSizePixel = 0
+        task.spawn(function()
+            for _0xi = 0, 1, 0.1 do
+                _0xl.TextTransparency = 1 - _0xi
+                _0xl.BackgroundTransparency = 0.1 + (1 - _0xi) * 0.9
+                task.wait(0.02)
+            end
+            _0xl.BorderSizePixel = 2
+        end)
+        task.delay(4, function()
+            if _0xl and _0xl.Parent then
+                for _0xi = 0, 1, 0.1 do
+                    _0xl.TextTransparency = _0xi
+                    _0xl.BackgroundTransparency = _0xi
+                    task.wait(0.02)
+                end
+                _0xl:Destroy()
+            end
+        end)
+    end)
 end
-local notifOrder = 0;
-local function showNotif(text, color)
-	pcall(function()
-		local FlatIdent_703C8 = 0;
-		local l;
-		while true do
-			if (FlatIdent_703C8 == 4) then
-				l.BorderSizePixel = 0;
-				task.spawn(function()
-					local FlatIdent_380E8 = 0;
-					while true do
-						if (FlatIdent_380E8 == 0) then
-							for i = 0, 1, 0.1 do
-								local FlatIdent_66799 = 0;
-								while true do
-									if (FlatIdent_66799 == 0) then
-										l.TextTransparency = 1 - i;
-										l.BackgroundTransparency = 0.1 + ((1 - i) * 0.9);
-										FlatIdent_66799 = 1;
-									end
-									if (FlatIdent_66799 == 1) then
-										task.wait(0.02);
-										break;
-									end
-								end
-							end
-							l.BorderSizePixel = 2;
-							break;
-						end
-					end
-				end);
-				task.delay(4, function()
-					if (l and l.Parent) then
-						local FlatIdent_8BF78 = 0;
-						while true do
-							if (FlatIdent_8BF78 == 0) then
-								for i = 0, 1, 0.1 do
-									local FlatIdent_817B0 = 0;
-									while true do
-										if (FlatIdent_817B0 == 0) then
-											l.TextTransparency = i;
-											l.BackgroundTransparency = i;
-											FlatIdent_817B0 = 1;
-										end
-										if (FlatIdent_817B0 == 1) then
-											task.wait(0.02);
-											break;
-										end
-									end
-								end
-								l:Destroy();
-								break;
-							end
-						end
-					end
-				end);
-				break;
-			end
-			if (FlatIdent_703C8 == 2) then
-				l.BorderColor3 = color or Color3.fromRGB(0, 255, 0);
-				l.TextColor3 = color or Color3.fromRGB(0, 255, 0);
-				l.Text = text;
-				l.TextScaled = true;
-				FlatIdent_703C8 = 3;
-			end
-			if (FlatIdent_703C8 == 3) then
-				l.Font = Enum.Font.SourceSansBold;
-				l.Parent = notifContainer;
-				l.TextTransparency = 1;
-				l.BackgroundTransparency = 1;
-				FlatIdent_703C8 = 4;
-			end
-			if (FlatIdent_703C8 == 0) then
-				ensureNotifGui();
-				notifOrder = notifOrder + 1;
-				l = Instance.new("TextLabel");
-				l.LayoutOrder = notifOrder;
-				FlatIdent_703C8 = 1;
-			end
-			if (FlatIdent_703C8 == 1) then
-				l.Size = UDim2.new(1, 0, 0, 38);
-				l.BackgroundColor3 = Color3.fromRGB(20, 20, 20);
-				l.BackgroundTransparency = 0.1;
-				l.BorderSizePixel = 2;
-				FlatIdent_703C8 = 2;
-			end
-		end
-	end);
+
+local function _0xJ6()
+    task.spawn(function()
+        task.wait(1.5)
+        for _, _0xe in ipairs(_0xH1) do
+            local _0xc = _0xe.type == "+" and Color3.fromRGB(0, 255, 0) or Color3.fromRGB(255, 80, 80)
+            _0xJ5("[" .. _0xe.type .. "] " .. _0xe.text, _0xc)
+            task.wait(0.35)
+        end
+    end)
 end
-local function showChangelogNotifs()
-	task.spawn(function()
-		local FlatIdent_9622C = 0;
-		while true do
-			if (FlatIdent_9622C == 0) then
-				task.wait(1.5);
-				for _, entry in ipairs(CHANGELOG) do
-					local FlatIdent_2D88C = 0;
-					local color;
-					while true do
-						if (1 == FlatIdent_2D88C) then
-							task.wait(0.35);
-							break;
-						end
-						if (FlatIdent_2D88C == 0) then
-							color = ((entry.type == "+") and Color3.fromRGB(0, 255, 0)) or Color3.fromRGB(255, 80, 80);
-							showNotif("[" .. entry.type .. "] " .. entry.text, color);
-							FlatIdent_2D88C = 1;
-						end
-					end
-				end
-				break;
-			end
-		end
-	end);
+
+-- ============================================================
+-- TAG [USUÁRIO] / [ADMIN] — VISÍVEL SOMENTE POR ADMIN
+-- E APENAS EM PLAYERS QUE USAM O HUB
+-- ============================================================
+local function _0xK1(_0xp)
+    if not _0xp or _0xp == _0xB5 then return end
+    -- FILTRO 1: Somente administradores podem VER as tags
+    if not _0xD1(_0xB5) then return end
+    -- FILTRO 2: Tag só aparece em quem usa o script principal
+    if _0xp:GetAttribute("\75\97\109\117\105\72\117\98\85\115\101\114") ~= true then
+        -- Remove tag se existir
+        local _0xch = _0xp.Character
+        if _0xch then
+            local _0xh = _0xch:FindFirstChild("Head")
+            if _0xh then
+                local _0xo = _0xh:FindFirstChild("\75\97\109\117\105\84\97\103")
+                if _0xo then _0xo:Destroy() end
+            end
+        end
+        return
+    end
+    local _0xch = _0xp.Character
+    if not _0xch then return end
+    local _0xh = _0xch:FindFirstChild("Head")
+    if not _0xh then return end
+    local _0xo = _0xh:FindFirstChild("\75\97\109\117\105\84\97\103")
+    if _0xo then _0xo:Destroy() end
+    local _0xAdm = _0xD1(_0xp)
+    local _0xBg = _0xAdm and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+    local _0xTx = _0xAdm and "[\65\68\77\73\78]" or "[\85\83\85\195\129\82\73\79]"
+    local _0xbb = Instance.new("BillboardGui")
+    _0xbb.Name = "\75\97\109\117\105\84\97\103"
+    _0xbb.Size = UDim2.new(0, 120, 0, 25)
+    _0xbb.StudsOffset = Vector3.new(0, 2.5, 0)
+    _0xbb.AlwaysOnTop = true
+    _0xbb.Parent = _0xh
+    local _0xlb = Instance.new("TextLabel")
+    _0xlb.Size = UDim2.new(1, 0, 1, 0)
+    _0xlb.BackgroundColor3 = _0xBg
+    _0xlb.BackgroundTransparency = 0.2
+    _0xlb.BorderSizePixel = 0
+    _0xlb.Text = _0xTx
+    _0xlb.TextColor3 = Color3.new(1, 1, 1)
+    _0xlb.TextScaled = true
+    _0xlb.Font = Enum.Font.SourceSansBold
+    _0xlb.Parent = _0xbb
 end
-local function createLanguageScreen()
-	local pg = LocalPlayer:WaitForChild("PlayerGui");
-	local old = pg:FindFirstChild("KamuiLanguageScreen");
-	if old then
-		old:Destroy();
-	end
-	local screen = Instance.new("ScreenGui");
-	screen.Name = "KamuiLanguageScreen";
-	screen.Parent = pg;
-	screen.ResetOnSpawn = false;
-	screen.IgnoreGuiInset = true;
-	local bg = Instance.new("Frame");
-	bg.Parent = screen;
-	bg.AnchorPoint = Vector2.new(0.5, 0.5);
-	bg.Position = UDim2.new(0.5, 0, 0.5, 0);
-	bg.Size = UDim2.new(1, 0, 1, 0);
-	bg.BackgroundColor3 = Color3.new(0, 0, 0);
-	bg.BorderSizePixel = 0;
-	local title = Instance.new("TextLabel");
-	title.Parent = bg;
-	title.AnchorPoint = Vector2.new(0.5, 0);
-	title.Position = UDim2.new(0.5, 0, 0.2, 0);
-	title.Size = UDim2.new(0.8, 0, 0.1, 0);
-	title.BackgroundTransparency = 1;
-	title.Text = "Kamui x hub (" .. VERSION .. ")";
-	title.TextColor3 = Color3.new(1, 1, 1);
-	title.TextScaled = true;
-	title.Font = Enum.Font.SourceSansBold;
-	local pt = Instance.new("TextButton");
-	pt.Parent = bg;
-	pt.AnchorPoint = Vector2.new(0.5, 0.5);
-	pt.Position = UDim2.new(0.35, 0, 0.5, 0);
-	pt.Size = UDim2.new(0.25, 0, 0.1, 0);
-	pt.BackgroundColor3 = Color3.fromRGB(0, 200, 0);
-	pt.BorderSizePixel = 0;
-	pt.Text = "Português";
-	pt.TextColor3 = Color3.new(1, 1, 1);
-	pt.TextScaled = true;
-	pt.Font = Enum.Font.SourceSansBold;
-	local en = Instance.new("TextButton");
-	en.Parent = bg;
-	en.AnchorPoint = Vector2.new(0.5, 0.5);
-	en.Position = UDim2.new(0.65, 0, 0.5, 0);
-	en.Size = UDim2.new(0.25, 0, 0.1, 0);
-	en.BackgroundColor3 = Color3.fromRGB(200, 0, 0);
-	en.BorderSizePixel = 0;
-	en.Text = "English";
-	en.TextColor3 = Color3.new(1, 1, 1);
-	en.TextScaled = true;
-	en.Font = Enum.Font.SourceSansBold;
-	pt.MouseButton1Click:Connect(function()
-		local FlatIdent_5346B = 0;
-		while true do
-			if (FlatIdent_5346B == 0) then
-				screen:Destroy();
-				buildHub("pt");
-				break;
-			end
-		end
-	end);
-	en.MouseButton1Click:Connect(function()
-		screen:Destroy();
-		buildHub("en");
-	end);
+
+local function _0xK2()
+    for _, _0xp in ipairs(_0xB2:GetPlayers()) do
+        if _0xp ~= _0xB5 then
+            _0xK1(_0xp)
+        end
+    end
 end
-local function createBackroomsLocal()
-	local existing = workspace:FindFirstChild("KamuiBackrooms");
-	if existing then
-		existing:Destroy();
-	end
-	local folder = Instance.new("Folder");
-	folder.Name = "KamuiBackrooms";
-	folder.Parent = workspace;
-	local origin = Vector3.new(0, BACKROOMS_Y, 0);
-	local roomSize = 200;
-	local wallHeight = 20;
-	local floor = Instance.new("Part");
-	floor.Name = "Floor";
-	floor.Size = Vector3.new(roomSize, 2, roomSize);
-	floor.Position = origin;
-	floor.Anchored = true;
-	floor.BrickColor = BrickColor.new("New Yeller");
-	floor.Material = Enum.Material.Concrete;
-	floor.Parent = folder;
-	local ceiling = Instance.new("Part");
-	ceiling.Name = "Ceiling";
-	ceiling.Size = Vector3.new(roomSize, 2, roomSize);
-	ceiling.Position = origin + Vector3.new(0, wallHeight, 0);
-	ceiling.Anchored = true;
-	ceiling.BrickColor = BrickColor.new("New Yeller");
-	ceiling.Material = Enum.Material.Concrete;
-	ceiling.Parent = folder;
-	local walls = {{size=Vector3.new(roomSize, wallHeight, 2),pos=(origin + Vector3.new(0, wallHeight / 2, roomSize / 2))},{size=Vector3.new(roomSize, wallHeight, 2),pos=(origin + Vector3.new(0, wallHeight / 2, -roomSize / 2))},{size=Vector3.new(2, wallHeight, roomSize),pos=(origin + Vector3.new(roomSize / 2, wallHeight / 2, 0))},{size=Vector3.new(2, wallHeight, roomSize),pos=(origin + Vector3.new(-roomSize / 2, wallHeight / 2, 0))}};
-	for i, w in ipairs(walls) do
-		local wall = Instance.new("Part");
-		wall.Name = "Wall" .. i;
-		wall.Size = w.size;
-		wall.Position = w.pos;
-		wall.Anchored = true;
-		wall.BrickColor = BrickColor.new("New Yeller");
-		wall.Material = Enum.Material.Concrete;
-		wall.Parent = folder;
-	end
-	for i = 1, 5 do
-		local FlatIdent_5F1CB = 0;
-		local lightPart;
-		local pl;
-		while true do
-			if (FlatIdent_5F1CB == 0) then
-				lightPart = Instance.new("Part");
-				lightPart.Name = "Light" .. i;
-				lightPart.Size = Vector3.new(8, 0.5, 2);
-				FlatIdent_5F1CB = 1;
-			end
-			if (FlatIdent_5F1CB == 2) then
-				lightPart.Material = Enum.Material.Neon;
-				lightPart.BrickColor = BrickColor.new("Toothpaste");
-				lightPart.Parent = folder;
-				FlatIdent_5F1CB = 3;
-			end
-			if (1 == FlatIdent_5F1CB) then
-				lightPart.Position = origin + Vector3.new(math.random(-80, 80), wallHeight - 1, math.random(-80, 80));
-				lightPart.Anchored = true;
-				lightPart.CanCollide = false;
-				FlatIdent_5F1CB = 2;
-			end
-			if (FlatIdent_5F1CB == 3) then
-				pl = Instance.new("PointLight");
-				pl.Brightness = 3;
-				pl.Range = 80;
-				FlatIdent_5F1CB = 4;
-			end
-			if (FlatIdent_5F1CB == 4) then
-				pl.Color = Color3.fromRGB(255, 250, 200);
-				pl.Parent = lightPart;
-				break;
-			end
-		end
-	end
-	return folder;
+
+local function _0xK3()
+    _0xK2()
+    _0xB2.PlayerAdded:Connect(function(_0xp)
+        _0xp.CharacterAdded:Connect(function()
+            task.wait(1.5)
+            _0xK1(_0xp)
+        end)
+        task.wait(2)
+        _0xK1(_0xp)
+    end)
+    for _, _0xp in ipairs(_0xB2:GetPlayers()) do
+        if _0xp.Character then
+            _0xp.CharacterAdded:Connect(function()
+                task.wait(1.5)
+                _0xK1(_0xp)
+            end)
+        end
+    end
+    -- Loop de verificação (caso alguém saia do hub ou admin entre depois)
+    task.spawn(function()
+        while true do
+            task.wait(5)
+            if _0xD1(_0xB5) then
+                _0xK2()
+            else
+                -- Se o LocalPlayer não é admin, remove todas as tags
+                for _, _0xp in ipairs(_0xB2:GetPlayers()) do
+                    if _0xp.Character then
+                        local _0xh = _0xp.Character:FindFirstChild("Head")
+                        if _0xh then
+                            local _0xt = _0xh:FindFirstChild("\75\97\109\117\105\84\97\103")
+                            if _0xt then _0xt:Destroy() end
+                        end
+                    end
+                end
+            end
+        end
+    end)
 end
-local function teleportToBackrooms(player)
-	local FlatIdent_22216 = 0;
-	local hrp;
-	while true do
-		if (0 == FlatIdent_22216) then
-			if (not player or not player.Character) then
-				return;
-			end
-			hrp = player.Character:FindFirstChild("HumanoidRootPart");
-			FlatIdent_22216 = 1;
-		end
-		if (FlatIdent_22216 == 1) then
-			if hrp then
-				hrp.CFrame = CFrame.new(0, BACKROOMS_Y + 5, 0);
-			end
-			break;
-		end
-	end
+
+local _0xL1 = false
+
+local function _0xL2(_0xpos)
+    local _0xm = Instance.new("Part")
+    _0xm.Name = "\75\97\109\117\105\77\101\116\101\111\114"
+    _0xm.Shape = Enum.PartType.Ball
+    _0xm.Size = Vector3.new(8, 8, 8)
+    _0xm.Material = Enum.Material.Neon
+    _0xm.BrickColor = BrickColor.new("Really red")
+    _0xm.Anchored = false
+    _0xm.CanCollide = true
+    _0xm.Position = Vector3.new(_0xpos.X + math.random(-200, 200), _0xpos.Y + 400, _0xpos.Z + math.random(-200, 200))
+    _0xm.Parent = workspace
+    local _0xf = Instance.new("Fire")
+    _0xf.Heat = 50
+    _0xf.Size = 20
+    _0xf.Parent = _0xm
+    local _0xli = Instance.new("PointLight")
+    _0xli.Brightness = 5
+    _0xli.Range = 40
+    _0xli.Color = Color3.fromRGB(255, 100, 0)
+    _0xli.Parent = _0xm
+    local _0xbv = Instance.new("BodyVelocity")
+    _0xbv.Velocity = Vector3.new(math.random(-50, 50), -300, math.random(-50, 50))
+    _0xbv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    _0xbv.Parent = _0xm
+    task.delay(8, function()
+        if _0xm and _0xm.Parent then _0xm:Destroy() end
+    end)
+    _0xm.Touched:Connect(function(_0xhit)
+        if not _0xhit then return end
+        if _0xm:GetAttribute("Exploded") then return end
+        _0xm:SetAttribute("Exploded", true)
+        local _0xe = Instance.new("Explosion")
+        _0xe.Position = _0xm.Position
+        _0xe.BlastRadius = 20
+        _0xe.BlastPressure = 50000
+        _0xe.Parent = workspace
+        if _0xm and _0xm.Parent then _0xm:Destroy() end
+    end)
 end
-local function buildAdminHub(langCode)
-	local t = T[langCode];
-	local AdminWindow = redzlib:MakeWindow({Title=("Kamui Admin Hub (" .. VERSION .. ")"),SubTitle="Painel de Administração",SaveFolder="kamui_admin"});
-	AdminWindow:AddMinimizeButton({Button={Image="rbxassetid://71014873973869",BackgroundTransparency=0},Corner={CornerRadius=UDim.new(35, 1)}});
-	local admTarget = nil;
-	local mapTarget = nil;
-	local function getNames()
-		local FlatIdent_21449 = 0;
-		local n;
-		while true do
-			if (FlatIdent_21449 == 0) then
-				n = {};
-				for _, p in ipairs(Players:GetPlayers()) do
-					if (p ~= LocalPlayer) then
-						local FlatIdent_4508F = 0;
-						local tag;
-						while true do
-							if (FlatIdent_4508F == 0) then
-								tag = ((p:GetAttribute("KamuiHubUser") == true) and " [HUB]") or "";
-								table.insert(n, p.Name .. tag);
-								break;
-							end
-						end
-					end
-				end
-				FlatIdent_21449 = 1;
-			end
-			if (FlatIdent_21449 == 1) then
-				if (#n == 0) then
-					table.insert(n, "Nenhum jogador");
-				end
-				return n;
-			end
-		end
-	end
-	local function getNamesNoHub()
-		local FlatIdent_284EA = 0;
-		local n;
-		while true do
-			if (FlatIdent_284EA == 0) then
-				n = {};
-				for _, p in ipairs(Players:GetPlayers()) do
-					if (p ~= LocalPlayer) then
-						table.insert(n, p.Name);
-					end
-				end
-				FlatIdent_284EA = 1;
-			end
-			if (FlatIdent_284EA == 1) then
-				if (#n == 0) then
-					table.insert(n, "Nenhum jogador");
-				end
-				return n;
-			end
-		end
-	end
-	local function clean(s)
-		return (s:gsub(" %[HUB%]", ""));
-	end
-	local function getTgt()
-		local FlatIdent_77172 = 0;
-		while true do
-			if (FlatIdent_77172 == 0) then
-				if not admTarget then
-					return nil;
-				end
-				return Players:FindFirstChild(clean(admTarget));
-			end
-		end
-	end
-	local function getMapTgt()
-		local FlatIdent_521D6 = 0;
-		while true do
-			if (0 == FlatIdent_521D6) then
-				if not mapTarget then
-					return nil;
-				end
-				return Players:FindFirstChild(mapTarget);
-			end
-		end
-	end
-	local AdmTroll = AdminWindow:MakeTab({"Troll","rbxassetid://6026568198"});
-	local admDD = AdmTroll:AddDropdown({Name="Alvo",Options=getNames(),Default="",Callback=function(v)
-		if (v and (v ~= "Nenhum jogador") and (v ~= "")) then
-			admTarget = v;
-		else
-			admTarget = nil;
-		end
-	end});
-	AdmTroll:AddButton({"Atualizar Lista",function()
-		pcall(function()
-			admDD:Set(getNames());
-		end);
-	end});
-	AdmTroll:AddButton({"⚠️ [Hub Only] Fling Alvo",function()
-		local FlatIdent_634AF = 0;
-		local tgt;
-		local ok;
-		local err;
-		local hrp;
-		while true do
-			if (FlatIdent_634AF == 2) then
-				hrp = tgt.Character and tgt.Character:FindFirstChild("HumanoidRootPart");
-				if hrp then
-					pcall(function()
-						local FlatIdent_28855 = 0;
-						local bv;
-						while true do
-							if (FlatIdent_28855 == 1) then
-								bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge);
-								bv.Parent = hrp;
-								break;
-							end
-							if (FlatIdent_28855 == 0) then
-								bv = Instance.new("BodyVelocity");
-								bv.Velocity = Vector3.new(900000000, 900000000, 900000000);
-								FlatIdent_28855 = 1;
-							end
-						end
-					end);
-					showNotif("[+] Fling aplicado em " .. tgt.Name, Color3.fromRGB(0, 255, 0));
-				end
-				break;
-			end
-			if (FlatIdent_634AF == 1) then
-				ok, err = requireHubUser(tgt);
-				if not ok then
-					showNotif("[-] " .. err, Color3.fromRGB(255, 80, 80));
-					return;
-				end
-				FlatIdent_634AF = 2;
-			end
-			if (0 == FlatIdent_634AF) then
-				tgt = getTgt();
-				if not tgt then
-					local FlatIdent_42BD8 = 0;
-					while true do
-						i
+
+local function _0xL3(_0xtp)
+    if _0xL1 then return end
+    _0xL1 = true
+    task.spawn(function()
+        while _0xL1 do
+            local _0xpos
+            if _0xtp and _0xtp.Character then
+                local _0xhrp = _0xtp.Character:FindFirstChild("HumanoidRootPart")
+                if _0xhrp then _0xpos = _0xhrp.Position end
+            end
+            if not _0xpos then
+                _0xpos = Vector3.new(math.random(-300, 300), 100, math.random(-300, 300))
+            end
+            _0xL2(_0xpos)
+            task.wait(0.5)
+        end
+    end)
+end
+
+local function _0xL4()
+    _0xL1 = false
+    for _, _0xo in ipairs(workspace:GetChildren()) do
+        if _0xo.Name == "\75\97\109\117\105\77\101\116\101\111\114" then
+            _0xo:Destroy()
+        end
+    end
+end
+
+local function _0xM1(_0xt)
+    if not _0xt then return end
+    local _0xRE = _0xB1:FindFirstChild("RE")
+    if not _0xRE then return end
+    task.spawn(function()
+        for _0xi = 1, 500 do
+            local _0xr = _0xRE:FindFirstChild("1Playe1rTrigge1rEven1t")
+            if _0xr then
+                pcall(function() _0xr:FireServer(string.rep("A", 10000), _0xt, string.rep("B", 10000)) end)
+            end
+            local _0xcr = _0xRE:FindFirstChild("1Cha1t") or _0xRE:FindFirstChild("1Musi1c")
+            if _0xcr then
+                pcall(function() _0xcr:FireServer("Play", string.rep("X", 5000), _0xt) end)
+            end
+            local _0xbr = _0xRE:FindFirstChild("1Buil1d") or _0xRE:FindFirstChild("1Ma1p")
+            if _0xbr then
+                pcall(function() _0xbr:FireServer("CreateMap", _0xC4, _0xt) end)
+            end
+            if _0xi % 50 == 0 then task.wait() end
+        end
+    end)
+    task.spawn(function()
+        for _0xi = 1, 200 do
+            if _0xt.Character then
+                local _0xhrp = _0xt.Character:FindFirstChild("HumanoidRootPart")
+                if _0xhrp then
+                    _0xhrp.CFrame = CFrame.new(math.random(-10000, 10000), math.random(-10000, 10000), math.random(-10000, 10000))
+                end
+            end
+            task.wait(0.01)
+        end
+    end)
+end
+
+local function _0xN1(_0xt, _0xm)
+    if not _0xt or not _0xm or _0xm == "" then return end
+    local _0xRE = _0xB1:FindFirstChild("RE")
+    if not _0xRE then return end
+    local _0xrs = { "1Cha1t", "1Cha1tEven1t", "1Se1ndMes1sage", "1Mes1sage", "1RPCha1t" }
+    for _, _0xrn in ipairs(_0xrs) do
+        local _0xr = _0xRE:FindFirstChild(_0xrn)
+        if _0xr then
+            pcall(function() _0xr:FireServer(_0xm, _0xt) end)
+            pcall(function() _0xr:FireServer(_0xt, _0xm) end)
+            pcall(function() _0xr:FireServer("SendMessage", _0xm, _0xt) end)
+            pcall(function() _0xr:FireServer("Chat", _0xm, _0xt) end)
+        end
+    end
+    local _0xrp = _0xRE:FindFirstChild("1RPNam1eTex1t")
+    if _0xrp then
+        pcall(function() _0xrp:FireServer("RolePlayBio", _0xm, _0xt) end)
+    end
+end
+
+local function _0xO1()
+    local _0xpg = _0xB5:WaitForChild("PlayerGui")
+    local _0xold = _0xpg:FindFirstChild("\75\97\109\117\105\76\97\110\103\117\97\103\101\83\99\114\101\101\110")
+    if _0xold then _0xold:Destroy() end
+    local _0xs = Instance.new("ScreenGui")
+    _0xs.Name = "\75\97\109\117\105\76\97\110\103\117\97\103\101\83\99\114\101\101\110"
+    _0xs.Parent = _0xpg
+    _0xs.ResetOnSpawn = false
+    _0xs.IgnoreGuiInset = true
+    local _0xbg = Instance.new("Frame")
+    _0xbg.Parent =
