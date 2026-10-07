@@ -1,8 +1,8 @@
 -- ============================================================
--- KAMUI X HUB v1.6.2
+-- KAMUI X HUB v1.6.3
 -- proteção kamui x hub
 -- ============================================================
-local VERSION = "v1.6.2"
+local VERSION = "v1.6.3"
 
 local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/minhdepzai-v/LibraryRobloc/refs/heads/main/RedzLibrary.lua"))()
 
@@ -20,7 +20,6 @@ LocalPlayer:SetAttribute("KamuiHubUser", true)
 local ADMIN_WHITELIST_NAMES = { "testeeeeeeeepouraa_99391", "teste_ofc9098764", "teste_ofc90", "TLK_EDITS" }
 local ADMIN_WHITELIST_IDS = { 7217546593 }
 local PLAYERS_TAB_ALLOWED = "teste_ofc90"
-local BACKROOMS_ID = "10581711055"
 local BACKROOMS_Y = 1050
 
 local function isAdminAuthorized(player)
@@ -34,9 +33,9 @@ local function isAdminAuthorized(player)
 end
 
 local function requireHubUser(player)
-    if not player then return false, "Nenhum jogador selecionado" end
+    if not player then return false, "Nenhum jogador" end
     if player:GetAttribute("KamuiHubUser") ~= true then
-        return false, player.Name .. " não está usando o hub"
+        return false, player.Name .. " não usa o hub"
     end
     return true, nil
 end
@@ -56,119 +55,63 @@ local function isProtected(name) return protectedPlayers[name] == true end
 -- ============================================================
 -- TRADUÇÕES
 -- ============================================================
-local T = {
-    pt = {
-        title = "Kamui x hub (" .. VERSION .. ")",
-        sub = "Brookhaven Troll + Gamepass + Extras",
-        credits = "Créditos",
-        creator = "Criador",
-        creatorName = "testeeeeeeeepouraa_99391",
-        discord = "Entre no nosso servidor Discord",
-        troll = "Troll",
-        target = "Alvo",
-        targetDesc = "Selecione o jogador (ou All)",
-        loading = "Carregando...",
-        noPlayers = "Nenhum jogador",
-        all = "All",
-        refresh = "Atualizar",
-        view = "View Alvo",
-        tp = "Teleportar",
-        fling = "Fling",
-        method = "Método",
-        execFling = "Executar Fling",
-        touchFling = "Touch Fling ball",
-        wlSection = "WHITELIST — Proteção contra Fling",
-        wlAdd = "Adicionar / Remover",
-        wlClear = "Remover Todos da Whitelist",
-        item = "Item",
-        itemPaid = "Item Pago",
-        itemGet = "Pegar Item",
-        musicTab = "Música",
-        musicId = "ID da música (ex: 1976786299)",
-        musicSend = "Tocar Música",
-        musicSaved = "Músicas Salvas",
-        musicSaveName = "Nome",
-        musicSave = "Salvar",
-        musicDel = "Deletar",
-        musicPlay = "Tocar Salva",
-        musicNone = "Nenhuma salva",
-        musicAll = "Música All",
-        musicAllSoon = "EM BREVE",
-        extras = "Extras",
-        autoRejoin = "Auto Rejoin",
-        prot = "Proteção",
-        antiSit = "Anti Sit",
-        noclip = "Noclip",
-        antiVoid = "Anti Void",
-        antiFling = "Anti-Fling",
-        avatar = "Avatar",
-        copyAvatar = "Copy Avatar",
-        avatarTarget = "Selecionar Jogador",
-        refreshList = "Atualizar Lista",
-        admin = "Admin",
-        adminWarn = "Acesso Restrito",
-        adminBtn = "Executar Admin Hub",
-        protectedNotif = "está protegido"
-    },
-    en = {
-        title = "Kamui x hub (" .. VERSION .. ")",
-        sub = "Brookhaven Troll + Gamepass + Extras",
-        credits = "Credits",
-        creator = "Creator",
-        creatorName = "testeeeeeeeepouraa_99391",
-        discord = "Join our Discord server",
-        troll = "Troll",
-        target = "Target",
-        targetDesc = "Select player (or All)",
-        loading = "Loading...",
-        noPlayers = "No players",
-        all = "All",
-        refresh = "Refresh",
-        view = "View Target",
-        tp = "Teleport",
-        fling = "Fling",
-        method = "Method",
-        execFling = "Execute Fling",
-        touchFling = "Touch Fling ball",
-        wlSection = "WHITELIST — Fling Protection",
-        wlAdd = "Add / Remove",
-        wlClear = "Remove All from Whitelist",
-        item = "Item",
-        itemPaid = "Paid Item",
-        itemGet = "Get Item",
-        musicTab = "Music",
-        musicId = "Music ID (ex: 1976786299)",
-        musicSend = "Play Music",
-        musicSaved = "Saved Songs",
-        musicSaveName = "Name",
-        musicSave = "Save",
-        musicDel = "Delete",
-        musicPlay = "Play Saved",
-        musicNone = "No saved songs",
-        musicAll = "Music All",
-        musicAllSoon = "COMING SOON",
-        extras = "Extras",
-        autoRejoin = "Auto Rejoin",
-        prot = "Protection",
-        antiSit = "Anti Sit",
-        noclip = "Noclip",
-        antiVoid = "Anti Void",
-        antiFling = "Anti-Fling",
-        avatar = "Avatar",
-        copyAvatar = "Copy Avatar",
-        avatarTarget = "Select Player",
-        refreshList = "Refresh List",
-        admin = "Admin",
-        adminWarn = "Restricted Access",
-        adminBtn = "Execute Admin Hub",
-        protectedNotif = "is protected"
-    }
+local t = {
+    title = "Kamui x hub (" .. VERSION .. ")",
+    sub = "Brookhaven Troll",
+    credits = "Créditos",
+    creator = "Criador",
+    creatorName = "testeeeeeeeepouraa_99391",
+    troll = "Troll",
+    target = "Alvo",
+    targetDesc = "Selecione o jogador (ou All)",
+    loading = "Carregando...",
+    noPlayers = "Nenhum jogador",
+    all = "All",
+    refresh = "Atualizar",
+    view = "View Alvo",
+    tp = "Teleportar",
+    fling = "Fling",
+    method = "Método",
+    execFling = "Executar Fling",
+    touchFling = "Touch Fling ball",
+    wlSection = "WHITELIST",
+    wlAdd = "Add/Remover",
+    wlClear = "Limpar WL",
+    item = "Item",
+    itemPaid = "Item Pago",
+    itemGet = "Pegar",
+    musicTab = "Música",
+    musicId = "ID da música",
+    musicSend = "Tocar",
+    musicSaved = "Salvas",
+    musicSaveName = "Nome",
+    musicSave = "Salvar",
+    musicDel = "Deletar",
+    musicPlay = "Tocar Salva",
+    musicNone = "Nenhuma",
+    musicAll = "Música All",
+    musicAllSoon = "EM BREVE",
+    extras = "Extras",
+    autoRejoin = "Auto Rejoin",
+    prot = "Proteção",
+    antiSit = "Anti Sit",
+    noclip = "Noclip",
+    antiVoid = "Anti Void",
+    antiFling = "Anti-Fling",
+    avatar = "Avatar",
+    copyAvatar = "Copy Avatar",
+    avatarTarget = "Jogador",
+    refreshList = "Atualizar",
+    admin = "Admin",
+    adminWarn = "Restrito",
+    adminBtn = "Abrir Admin",
+    protectedNotif = "está protegido"
 }
 
 -- ============================================================
--- PERSISTÊNCIA DE MÚSICA
+-- PERSISTÊNCIA
 -- ============================================================
-local MUSIC_FILE = "kamui_saved_music.json"
+local MUSIC_FILE = "kamui_music.json"
 local savedMusic = {}
 if FILE_API_OK then
     pcall(function()
@@ -178,20 +121,18 @@ if FILE_API_OK then
                 local data = HttpService:JSONDecode(raw)
                 if type(data) == "table" then
                     for k, v in pairs(data) do
-                        local clean = tostring(v):match("(%d+)")
-                        if clean then savedMusic[k] = clean end
+                        local c = tostring(v):match("(%d+)")
+                        if c then savedMusic[k] = c end
                     end
                 end
             end
         end
     end)
 end
-
 local function persistMusic()
     if not FILE_API_OK then return end
     pcall(function() writefile(MUSIC_FILE, HttpService:JSONEncode(savedMusic)) end)
 end
-
 local function normalizeId(id)
     if not id then return nil end
     id = tostring(id):gsub("%s+", "")
@@ -199,103 +140,87 @@ local function normalizeId(id)
 end
 
 -- ============================================================
--- SISTEMA DE NOTIFICAÇÃO PERSISTENTE
+-- NOTIFICAÇÕES
 -- ============================================================
-local notifGui = nil
-local notifContainer = nil
-local notifOrder = 0
-
+local notifGui, notifContainer, notifOrder = nil, nil, 0
 local function ensureNotifGui()
-    if notifGui and notifGui.Parent then return notifGui end
+    if notifGui and notifGui.Parent then return end
     local pg = LocalPlayer:WaitForChild("PlayerGui")
     local s = pg:FindFirstChild("KamuiNotifGui")
     if s then s:Destroy() end
-    s = Instance.new("ScreenGui")
-    s.Name = "KamuiNotifGui"
-    s.Parent = pg
-    s.ResetOnSpawn = false
-    s.IgnoreGuiInset = true
-    s.DisplayOrder = 999
-    notifGui = s
-    local c = Instance.new("Frame")
-    c.Name = "NotifContainer"
-    c.AnchorPoint = Vector2.new(0.5, 0)
-    c.Position = UDim2.new(0.5, 0, 0.05, 0)
-    c.Size = UDim2.new(0.6, 0, 0, 0)
-    c.BackgroundTransparency = 1
-    c.Parent = s
+    notifGui = Instance.new("ScreenGui")
+    notifGui.Name = "KamuiNotifGui"
+    notifGui.Parent = pg
+    notifGui.ResetOnSpawn = false
+    notifGui.IgnoreGuiInset = true
+    notifGui.DisplayOrder = 999
+    notifContainer = Instance.new("Frame")
+    notifContainer.AnchorPoint = Vector2.new(0.5, 0)
+    notifContainer.Position = UDim2.new(0.5, 0, 0.05, 0)
+    notifContainer.Size = UDim2.new(0.6, 0, 0, 0)
+    notifContainer.BackgroundTransparency = 1
+    notifContainer.Parent = notifGui
     local l = Instance.new("UIListLayout")
     l.SortOrder = Enum.SortOrder.LayoutOrder
     l.Padding = UDim.new(0, 6)
-    l.Parent = c
-    notifContainer = c
-    return s
+    l.Parent = notifContainer
 end
-
 local function showNotif(text, color)
     pcall(function()
         ensureNotifGui()
         notifOrder = notifOrder + 1
-        local frame = Instance.new("Frame")
-        frame.LayoutOrder = notifOrder
-        frame.Size = UDim2.new(1, 0, 0, 45)
-        frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-        frame.BackgroundTransparency = 0.1
-        frame.BorderSizePixel = 2
-        frame.BorderColor3 = color or Color3.fromRGB(0, 255, 0)
-        frame.Parent = notifContainer
-        local title = Instance.new("TextLabel")
-        title.Size = UDim2.new(1, 0, 0, 22)
-        title.BackgroundTransparency = 1
-        title.Text = "Kamui Hub"
-        title.TextColor3 = color or Color3.fromRGB(0, 255, 0)
-        title.TextScaled = true
-        title.Font = Enum.Font.SourceSansBold
-        title.TextXAlignment = Enum.TextXAlignment.Left
-        title.Parent = frame
-        local content = Instance.new("TextLabel")
-        content.Position = UDim2.new(0, 0, 0, 22)
-        content.Size = UDim2.new(1, 0, 0, 23)
-        content.BackgroundTransparency = 1
-        content.Text = text
-        content.TextColor3 = Color3.fromRGB(255, 255, 255)
-        content.TextScaled = true
-        content.Font = Enum.Font.SourceSans
-        content.TextXAlignment = Enum.TextXAlignment.Left
-        content.Parent = frame
-        task.delay(5, function()
-            if frame and frame.Parent then frame:Destroy() end
-        end)
+        local f = Instance.new("Frame")
+        f.LayoutOrder = notifOrder
+        f.Size = UDim2.new(1, 0, 0, 45)
+        f.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+        f.BackgroundTransparency = 0.1
+        f.BorderSizePixel = 2
+        f.BorderColor3 = color or Color3.fromRGB(0, 255, 0)
+        f.Parent = notifContainer
+        local tl = Instance.new("TextLabel")
+        tl.Size = UDim2.new(1, 0, 0, 22)
+        tl.BackgroundTransparency = 1
+        tl.Text = "Kamui Hub"
+        tl.TextColor3 = color or Color3.fromRGB(0, 255, 0)
+        tl.TextScaled = true
+        tl.Font = Enum.Font.SourceSansBold
+        tl.TextXAlignment = Enum.TextXAlignment.Left
+        tl.Parent = f
+        local ct = Instance.new("TextLabel")
+        ct.Position = UDim2.new(0, 0, 0, 22)
+        ct.Size = UDim2.new(1, 0, 0, 23)
+        ct.BackgroundTransparency = 1
+        ct.Text = text
+        ct.TextColor3 = Color3.fromRGB(255, 255, 255)
+        ct.TextScaled = true
+        ct.TextXAlignment = Enum.TextXAlignment.Left
+        ct.Parent = f
+        task.delay(5, function() if f and f.Parent then f:Destroy() end end)
     end)
 end
-
-local function notifySuccess(text) showNotif(text, Color3.fromRGB(0, 255, 0)) end
-local function notifyError(text) showNotif(text, Color3.fromRGB(255, 80, 80)) end
-local function notifyInfo(text) showNotif(text, Color3.fromRGB(0, 200, 255)) end
+local function ok(txt) showNotif(txt, Color3.fromRGB(0, 255, 0)) end
+local function err(txt) showNotif(txt, Color3.fromRGB(255, 80, 80)) end
+local function info(txt) showNotif(txt, Color3.fromRGB(0, 200, 255)) end
 
 -- ============================================================
--- LEITOR DE TEXTBOX
+-- LEITOR TEXTBOX
 -- ============================================================
 local function readTextBox(tb)
     if not tb then return nil end
-    for _, m in ipairs({
-        function() return tb.Text end,
-        function() return tb:GetText() end,
-        function() return tb:Get() end,
-        function() return tb.Value end
-    }) do
-        local ok, v = pcall(m)
-        if ok and type(v) == "string" and v ~= "" then return v end
+    for _, m in ipairs({ function() return tb.Text end, function() return tb:GetText() end, function() return tb:Get() end, function() return tb.Value end }) do
+        local o, v = pcall(m)
+        if o and type(v) == "string" and v ~= "" then return v end
     end
     return nil
 end
 
 -- ============================================================
--- TAGS [USUÁRIO] / [ADMIN] (só visíveis para admins)
+-- TAGS  {user} / {administrador}
 -- ============================================================
+local tagsActive = false
+
 local function applyTag(player)
     if not player or player == LocalPlayer then return end
-    if not isAdminAuthorized(LocalPlayer) then return end
     if player:GetAttribute("KamuiHubUser") ~= true then return end
     local char = player.Character
     if not char then return end
@@ -304,33 +229,45 @@ local function applyTag(player)
     local old = head:FindFirstChild("KamuiTag")
     if old then old:Destroy() end
     local isAdm = isAdminAuthorized(player)
-    local billboard = Instance.new("BillboardGui")
-    billboard.Name = "KamuiTag"
-    billboard.Size = UDim2.new(0, 120, 0, 25)
-    billboard.StudsOffset = Vector3.new(0, 2.5, 0)
-    billboard.AlwaysOnTop = true
-    billboard.Parent = head
-    local label = Instance.new("TextLabel")
-    label.Size = UDim2.new(1, 0, 1, 0)
-    label.BackgroundColor3 = isAdm and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 255, 0)
-    label.BackgroundTransparency = 0.2
-    label.BorderSizePixel = 0
-    label.Text = isAdm and "[ADMIN]" or "[USUÁRIO]"
-    label.TextColor3 = Color3.new(1, 1, 1)
-    label.TextScaled = true
-    label.Font = Enum.Font.SourceSansBold
-    label.Parent = billboard
+    local bb = Instance.new("BillboardGui")
+    bb.Name = "KamuiTag"
+    bb.Size = UDim2.new(0, 140, 0, 25)
+    bb.StudsOffset = Vector3.new(0, 2.5, 0)
+    bb.AlwaysOnTop = true
+    bb.Parent = head
+    local lb = Instance.new("TextLabel")
+    lb.Size = UDim2.new(1, 0, 1, 0)
+    lb.BackgroundColor3 = isAdm and Color3.fromRGB(255, 0, 0) or Color3.fromRGB(0, 200, 0)
+    lb.BackgroundTransparency = 0.2
+    lb.BorderSizePixel = 0
+    lb.Text = isAdm and "{administrador}" or "{user}"
+    lb.TextColor3 = Color3.new(1, 1, 1)
+    lb.TextScaled = true
+    lb.Font = Enum.Font.SourceSansBold
+    lb.Parent = bb
+end
+
+local function removeAllTags()
+    for _, p in ipairs(Players:GetPlayers()) do
+        if p.Character then
+            local head = p.Character:FindFirstChild("Head")
+            if head then
+                local tag = head:FindFirstChild("KamuiTag")
+                if tag then tag:Destroy() end
+            end
+        end
+    end
 end
 
 local function hookTags()
-    if not isAdminAuthorized(LocalPlayer) then return end
+    tagsActive = true
     for _, p in ipairs(Players:GetPlayers()) do
         if p ~= LocalPlayer then applyTag(p) end
     end
     Players.PlayerAdded:Connect(function(p)
-        p.CharacterAdded:Connect(function() task.wait(1.5) applyTag(p) end)
+        p.CharacterAdded:Connect(function() task.wait(1.5) if tagsActive then applyTag(p) end end)
         task.wait(2)
-        applyTag(p)
+        if tagsActive then applyTag(p) end
     end)
 end
 
@@ -339,41 +276,40 @@ end
 -- ============================================================
 local meteorRunning = false
 local function spawnMeteor(position)
-    local meteor = Instance.new("Part")
-    meteor.Name = "KamuiMeteor"
-    meteor.Shape = Enum.PartType.Ball
-    meteor.Size = Vector3.new(8, 8, 8)
-    meteor.Material = Enum.Material.Neon
-    meteor.BrickColor = BrickColor.new("Really red")
-    meteor.CanCollide = true
-    meteor.Position = Vector3.new(position.X + math.random(-200, 200), position.Y + 400, position.Z + math.random(-200, 200))
-    meteor.Parent = workspace
+    local m = Instance.new("Part")
+    m.Name = "KamuiMeteor"
+    m.Shape = Enum.PartType.Ball
+    m.Size = Vector3.new(8, 8, 8)
+    m.Material = Enum.Material.Neon
+    m.BrickColor = BrickColor.new("Really red")
+    m.CanCollide = true
+    m.Position = Vector3.new(position.X + math.random(-200, 200), position.Y + 400, position.Z + math.random(-200, 200))
+    m.Parent = workspace
     local fire = Instance.new("Fire")
     fire.Heat = 50
     fire.Size = 20
-    fire.Parent = meteor
+    fire.Parent = m
     local light = Instance.new("PointLight")
     light.Brightness = 5
     light.Range = 40
     light.Color = Color3.fromRGB(255, 100, 0)
-    light.Parent = meteor
+    light.Parent = m
     local bv = Instance.new("BodyVelocity")
     bv.Velocity = Vector3.new(math.random(-50, 50), -300, math.random(-50, 50))
     bv.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-    bv.Parent = meteor
-    task.delay(8, function() if meteor and meteor.Parent then meteor:Destroy() end end)
-    meteor.Touched:Connect(function()
-        if meteor:GetAttribute("Exploded") then return end
-        meteor:SetAttribute("Exploded", true)
+    bv.Parent = m
+    task.delay(8, function() if m and m.Parent then m:Destroy() end end)
+    m.Touched:Connect(function()
+        if m:GetAttribute("Exploded") then return end
+        m:SetAttribute("Exploded", true)
         local explosion = Instance.new("Explosion")
-        explosion.Position = meteor.Position
+        explosion.Position = m.Position
         explosion.BlastRadius = 20
         explosion.BlastPressure = 50000
         explosion.Parent = workspace
-        if meteor.Parent then meteor:Destroy() end
+        if m.Parent then m:Destroy() end
     end)
 end
-
 local function startMeteor(target)
     if meteorRunning then return end
     meteorRunning = true
@@ -390,7 +326,6 @@ local function startMeteor(target)
         end
     end)
 end
-
 local function stopMeteor()
     meteorRunning = false
     for _, obj in ipairs(workspace:GetChildren()) do
@@ -399,7 +334,7 @@ local function stopMeteor()
 end
 
 -- ============================================================
--- CRASH PLAYER
+-- CRASH / MSG
 -- ============================================================
 local function crashPlayer(target)
     if not target then return end
@@ -422,10 +357,6 @@ local function crashPlayer(target)
         end
     end)
 end
-
--- ============================================================
--- MENSAGEM FORÇADA
--- ============================================================
 local function forceMessage(target, message)
     if not target or not message or message == "" then return end
     local RE = replicatedStorage:FindFirstChild("RE")
@@ -440,107 +371,197 @@ local function forceMessage(target, message)
 end
 
 -- ============================================================
--- BACKROOMS
+-- BACKROOMS (maze real com paredes consistentes)
 -- ============================================================
 local function createBackrooms()
     local existing = workspace:FindFirstChild("KamuiBackrooms")
     if existing then existing:Destroy() end
+
     local folder = Instance.new("Folder")
     folder.Name = "KamuiBackrooms"
     folder.Parent = workspace
+
+    local gridSize = 6
+    local cellSize = 40
+    local wallHeight = 14
+    local wallThickness = 2
     local origin = Vector3.new(0, BACKROOMS_Y, 0)
-    local roomSize = 200
-    local wallHeight = 20
-    local floor = Instance.new("Part")
-    floor.Name = "Floor"
-    floor.Size = Vector3.new(roomSize, 2, roomSize)
-    floor.Position = origin
-    floor.Anchored = true
-    floor.BrickColor = BrickColor.new("New Yeller")
-    floor.Material = Enum.Material.Concrete
-    floor.Parent = folder
+
+    -- Gera matriz de paredes (maze simples)
+    -- hWalls[x][z] = parede horizontal entre (x,z) e (x+1,z)
+    -- vWalls[x][z] = parede vertical entre (x,z) e (x,z+1)
+    local hWalls = {}
+    local vWalls = {}
+    for x = 1, gridSize do
+        hWalls[x] = {}
+        vWalls[x] = {}
+        for z = 1, gridSize do
+            hWalls[x][z] = false
+            vWalls[x][z] = false
+        end
+    end
+
+    -- Borda externa sempre com parede
+    for x = 1, gridSize do
+        hWalls[x][gridSize] = true
+        hWalls[x][1] = true
+        vWalls[x][gridSize] = true
+        vWalls[x][1] = true
+    end
+    for z = 1, gridSize do
+        hWalls[gridSize][z] = true
+        hWalls[1][z] = true
+        vWalls[gridSize][z] = true
+        vWalls[1][z] = true
+    end
+
+    -- Paredes internas aleatórias (60% chance)
+    for x = 1, gridSize - 1 do
+        for z = 1, gridSize - 1 do
+            if math.random() > 0.4 then
+                hWalls[x][z] = true
+            end
+            if math.random() > 0.4 then
+                vWalls[x][z] = true
+            end
+        end
+    end
+
+    -- Chão (carpete amarelo)
+    for x = 1, gridSize do
+        for z = 1, gridSize do
+            local tile = Instance.new("Part")
+            tile.Name = "Floor"
+            tile.Size = Vector3.new(cellSize, 1, cellSize)
+            tile.Position = origin + Vector3.new((x - gridSize/2 - 0.5) * cellSize, 0, (z - gridSize/2 - 0.5) * cellSize)
+            tile.Anchored = true
+            tile.BrickColor = BrickColor.new("Cool yellow")
+            tile.Material = Enum.Material.Fabric
+            tile.Parent = folder
+        end
+    end
+
+    -- Teto
     local ceiling = Instance.new("Part")
     ceiling.Name = "Ceiling"
-    ceiling.Size = Vector3.new(roomSize, 2, roomSize)
+    ceiling.Size = Vector3.new(gridSize * cellSize, 1, gridSize * cellSize)
     ceiling.Position = origin + Vector3.new(0, wallHeight, 0)
     ceiling.Anchored = true
-    ceiling.BrickColor = BrickColor.new("New Yeller")
-    ceiling.Material = Enum.Material.Concrete
+    ceiling.BrickColor = BrickColor.new("Cool yellow")
+    ceiling.Material = Enum.Material.SmoothPlastic
     ceiling.Parent = folder
-    for i, w in ipairs({
-        {Vector3.new(roomSize, wallHeight, 2), origin + Vector3.new(0, wallHeight/2, roomSize/2)},
-        {Vector3.new(roomSize, wallHeight, 2), origin + Vector3.new(0, wallHeight/2, -roomSize/2)},
-        {Vector3.new(2, wallHeight, roomSize), origin + Vector3.new(roomSize/2, wallHeight/2, 0)},
-        {Vector3.new(2, wallHeight, roomSize), origin + Vector3.new(-roomSize/2, wallHeight/2, 0)}
-    }) do
-        local wall = Instance.new("Part")
-        wall.Name = "Wall" .. i
-        wall.Size = w[1]
-        wall.Position = w[2]
-        wall.Anchored = true
-        wall.BrickColor = BrickColor.new("New Yeller")
-        wall.Material = Enum.Material.Concrete
-        wall.Parent = folder
+
+    -- Constrói paredes horizontais
+    for x = 1, gridSize do
+        for z = 1, gridSize do
+            if hWalls[x][z] then
+                local wall = Instance.new("Part")
+                wall.Name = "Wall"
+                wall.Size = Vector3.new(cellSize + wallThickness, wallHeight, wallThickness)
+                wall.Position = origin + Vector3.new(
+                    (x - gridSize/2 - 0.5) * cellSize,
+                    wallHeight / 2,
+                    (z - gridSize/2) * cellSize
+                )
+                wall.Anchored = true
+                wall.BrickColor = BrickColor.new("Cool yellow")
+                wall.Material = Enum.Material.SmoothPlastic
+                wall.Parent = folder
+            end
+        end
     end
-    for i = 1, 5 do
-        local lightPart = Instance.new("Part")
-        lightPart.Name = "Light" .. i
-        lightPart.Size = Vector3.new(8, 0.5, 2)
-        lightPart.Position = origin + Vector3.new(math.random(-80, 80), wallHeight - 1, math.random(-80, 80))
-        lightPart.Anchored = true
-        lightPart.CanCollide = false
-        lightPart.Material = Enum.Material.Neon
-        lightPart.BrickColor = BrickColor.new("Toothpaste")
-        lightPart.Parent = folder
+
+    -- Constrói paredes verticais
+    for x = 1, gridSize do
+        for z = 1, gridSize do
+            if vWalls[x][z] then
+                local wall = Instance.new("Part")
+                wall.Name = "Wall"
+                wall.Size = Vector3.new(wallThickness, wallHeight, cellSize + wallThickness)
+                wall.Position = origin + Vector3.new(
+                    (x - gridSize/2) * cellSize,
+                    wallHeight / 2,
+                    (z - gridSize/2 - 0.5) * cellSize
+                )
+                wall.Anchored = true
+                wall.BrickColor = BrickColor.new("Cool yellow")
+                wall.Material = Enum.Material.SmoothPlastic
+                wall.Parent = folder
+            end
+        end
+    end
+
+    -- Lâmpadas fluorescentes
+    for i = 1, 10 do
+        local lamp = Instance.new("Part")
+        lamp.Name = "Lamp"
+        lamp.Size = Vector3.new(8, 0.3, 2)
+        lamp.Position = origin + Vector3.new(
+            math.random(-gridSize * 15, gridSize * 15),
+            wallHeight - 1.5,
+            math.random(-gridSize * 15, gridSize * 15)
+        )
+        lamp.Anchored = true
+        lamp.CanCollide = false
+        lamp.Material = Enum.Material.Neon
+        lamp.BrickColor = BrickColor.new("Toothpaste")
+        lamp.Parent = folder
         local pl = Instance.new("PointLight")
         pl.Brightness = 3
-        pl.Range = 80
-        pl.Color = Color3.fromRGB(255, 250, 200)
-        pl.Parent = lightPart
+        pl.Range = 50
+        pl.Color = Color3.fromRGB(255, 250, 180)
+        pl.Parent = lamp
     end
 end
 
 local function teleportToBackrooms(player)
     if not player or not player.Character then return end
-    local hrp = player.Character:FindFirstChild("HumanoidRootPart")
-    if hrp then hrp.CFrame = CFrame.new(0, BACKROOMS_Y + 5, 0) end
+    task.spawn(function()
+        for i = 1, 30 do
+            local char = player.Character
+            if not char then break end
+            local hrp = char:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                hrp.CFrame = CFrame.new(0, BACKROOMS_Y + 5, 0)
+            end
+            task.wait(0.1)
+        end
+    end)
 end
 
 -- ============================================================
--- LANGUAGE SCREEN
+-- ADMIN HUB
 -- ============================================================
-local function createLanguageScreen()
-    local pg = LocalPlayer:WaitForChild("PlayerGui")
-    local old = pg:FindFirstChild("KamuiLanguageScreen")
-    if old then old:Destroy() end
-    local screen = Instance.new("ScreenGui")
-    screen.Name = "KamuiLanguageScreen"
-    screen.Parent = pg
-    screen.ResetOnSpawn = false
-    screen.IgnoreGuiInset = true
-    local bg = Instance.new("Frame")
-    bg.Parent = screen
-    bg.AnchorPoint = Vector2.new(0.5, 0.5)
-    bg.Position = UDim2.new(0.5, 0, 0.5, 0)
-    bg.Size = UDim2.new(1, 0, 1, 0)
-    bg.BackgroundColor3 = Color3.new(0, 0, 0)
-    bg.BorderSizePixel = 0
-    local title = Instance.new("TextLabel")
-    title.Parent = bg
-    title.AnchorPoint = Vector2.new(0.5, 0)
-    title.Position = UDim2.new(0.5, 0, 0.2, 0)
-    title.Size = UDim2.new(0.8, 0, 0.1, 0)
-    title.BackgroundTransparency = 1
-    title.Text = "Kamui x hub (" .. VERSION .. ")"
-    title.TextColor3 = Color3.new(1, 1, 1)
-    title.TextScaled = true
-    title.Font = Enum.Font.SourceSansBold
-    local pt = Instance.new("TextButton")
-    pt.Parent = bg
-    pt.AnchorPoint = Vector2.new(0.5, 0.5)
-    pt.Position = UDim2.new(0.35, 0, 0.5, 0)
-    pt.Size = UDim2.new(0.25, 0, 0.1, 0)
-    pt.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
-    pt.BorderSizePixel = 0
-    pt.Text = "Português"
-    pt.
+local function buildAdminHub()
+    local AdminWindow = redzlib:MakeWindow({
+        Title = "Kamui Admin Hub (" .. VERSION .. ")",
+        SubTitle = "Painel Admin",
+        SaveFolder = "kamui_admin"
+    })
+    AdminWindow:AddMinimizeButton({
+        Button = { Image = "rbxassetid://71014873973869", BackgroundTransparency = 0 },
+        Corner = { CornerRadius = UDim.new(35, 1) }
+    })
+    local admTarget, mapTarget = nil, nil
+    local function getNames()
+        local n = {}
+        for _, p in ipairs(Players:GetPlayers()) do
+            if p ~= LocalPlayer then
+                local tag = (p:GetAttribute("KamuiHubUser") == true) and " [HUB]" or ""
+                table.insert(n, p.Name .. tag)
+            end
+        end
+        if #n == 0 then table.insert(n, "Nenhum") end
+        return n
+    end
+    local function getNamesNoHub()
+        local n = {}
+        for _, p in ipairs(Players:GetPlayers()) do
+            if p ~= LocalPlayer then table.insert(n, p.Name) end
+        end
+        if #n == 0 then table.insert(n, "Nenhum") end
+        return n
+    end
+    local function clean(s) return (s:gsub(" %[HUB%]", "")) end
+    local function getTgt() if not admTarget then return nil end return Players:FindFirstChild(clean(admTarget)) end
+    local function getMapTgt() if not mapTarget then return nil end return Players:FindFirstChild(map
