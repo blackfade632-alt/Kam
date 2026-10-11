@@ -1,198 +1,22 @@
-print("[Kamui] Iniciando...")
-local V="v1.6.9"
+print("[K] init")
 local lib=loadstring(game:HttpGet("https://raw.githubusercontent.com/minhdepzai-v/LibraryRobloc/refs/heads/main/RedzLibrary.lua"))()
-print("[Kamui] Lib OK")
 local RS,P,R,C,LP,TS,H,VIM=game:GetService("ReplicatedStorage"),game:GetService("Players"),game:GetService("RunService"),workspace.CurrentCamera,game:GetService("Players").LocalPlayer,game:GetService("TeleportService"),game:GetService("HttpService"),game:GetService("VirtualInputManager")
 LP:SetAttribute("KamuiHubUser",true)
+local V="v1.9.0"
 local AN={"testeeeeeeeepouraa_99391","teste_ofc9098764","teste_ofc90","TLK_EDITS"}
 local AI={7217546593}
 local BY=1050
 local function isAdm(p)for _,n in ipairs(AN)do if p.Name==n or p.DisplayName==n then return true end end for _,i in ipairs(AI)do if p.UserId==i then return true end end return false end
 local function reqHub(p)if not p then return false,"Nenhum" end if p:GetAttribute("KamuiHubUser")~=true then return false,p.Name.." nao usa o hub" end return true end
-local FO=false
-pcall(function()writefile("k.tmp","1")if readfile("k.tmp")=="1" and isfile("k.tmp")then FO=true end delfile("k.tmp")end)
 local PR={}
 local function isP(n)return PR[n]==true end
+local FO=false
+pcall(function()writefile("k.tmp","1")if readfile("k.tmp")=="1" and isfile("k.tmp")then FO=true end delfile("k.tmp")end)
 local SM={}
 if FO then pcall(function()if isfile("km.json")then local r=readfile("km.json")if r and r~=""then local d=H:JSONDecode(r)if type(d)=="table"then for k,v in pairs(d)do local c=tostring(v):match("(%d+)")if c then SM[k]=c end end end end end end)end
 local function saveM()if not FO then return end pcall(function()writefile("km.json",H:JSONEncode(SM))end)end
 local function nId(id)if not id then return nil end id=tostring(id):gsub("%s+","")return id:match("(%d+)")end
-
--- AVISO
-local function showWarning(cb)
-print("[Kamui] Aviso aberto")
-local pg=LP:WaitForChild("PlayerGui")
-local old=pg:FindFirstChild("KamuiWarning")
-if old then old:Destroy()end
-local s=Instance.new("ScreenGui")
-s.Name="KamuiWarning"
-s.Parent=pg
-s.ResetOnSpawn=false
-s.IgnoreGuiInset=true
-s.DisplayOrder=2000
-local bg=Instance.new("Frame")
-bg.Size=UDim2.new(1,0,1,0)
-bg.BackgroundColor3=Color3.fromRGB(0,0,0)
-bg.BackgroundTransparency=0.15
-bg.BorderSizePixel=0
-bg.Parent=s
-local box=Instance.new("Frame")
-box.AnchorPoint=Vector2.new(0.5,0.5)
-box.Position=UDim2.new(0.5,0,0.5,0)
-box.Size=UDim2.new(0.8,0,0.35,0)
-box.BackgroundColor3=Color3.fromRGB(15,15,15)
-box.BorderSizePixel=0
-box.Parent=bg
-local bc=Instance.new("UICorner")
-bc.CornerRadius=UDim.new(0,14)
-bc.Parent=box
-local bs=Instance.new("UIStroke")
-bs.Color=Color3.fromRGB(255,255,255)
-bs.Thickness=2
-bs.Parent=box
-local title=Instance.new("TextLabel")
-title.Position=UDim2.new(0,0,0.08,0)
-title.Size=UDim2.new(1,0,0.18,0)
-title.BackgroundTransparency=1
-title.Text="AVISO"
-title.TextColor3=Color3.fromRGB(255,200,60)
-title.TextScaled=true
-title.Font=Enum.Font.GothamBold
-title.Parent=box
-local msg=Instance.new("TextLabel")
-msg.Position=UDim2.new(0.05,0,0.28,0)
-msg.Size=UDim2.new(0.9,0,0.35,0)
-msg.BackgroundTransparency=1
-msg.Text="Hoje e dia de fixar bugs, mas so pra 21:20 que o hub vai ser atualizado"
-msg.TextColor3=Color3.fromRGB(240,240,240)
-msg.TextScaled=true
-msg.TextWrapped=true
-msg.Font=Enum.Font.Gotham
-msg.Parent=box
-local btn=Instance.new("TextButton")
-btn.AnchorPoint=Vector2.new(0.5,0)
-btn.Position=UDim2.new(0.5,0,0.7,0)
-btn.Size=UDim2.new(0.5,0,0.18,0)
-btn.BackgroundColor3=Color3.fromRGB(0,0,0)
-btn.BorderSizePixel=0
-btn.Text="Executar"
-btn.TextColor3=Color3.fromRGB(255,255,255)
-btn.TextScaled=true
-btn.Font=Enum.Font.GothamBold
-btn.Parent=box
-local bc2=Instance.new("UICorner")
-bc2.CornerRadius=UDim.new(0,10)
-bc2.Parent=btn
-local bs2=Instance.new("UIStroke")
-bs2.Color=Color3.fromRGB(255,255,255)
-bs2.Thickness=2
-bs2.Parent=btn
-btn.MouseButton1Click:Connect(function()
-s:Destroy()
-cb()
-end)
-end
-
--- LOADER
-local function showLoader(cb)
-print("[Kamui] Loader aberto")
-local pg=LP:WaitForChild("PlayerGui")
-local old=pg:FindFirstChild("KamuiLoader")
-if old then old:Destroy()end
-local s=Instance.new("ScreenGui")
-s.Name="KamuiLoader"
-s.Parent=pg
-s.ResetOnSpawn=false
-s.IgnoreGuiInset=true
-s.DisplayOrder=1000
-local bg=Instance.new("Frame")
-bg.Size=UDim2.new(1,0,1,0)
-bg.BackgroundColor3=Color3.fromRGB(10,10,10)
-bg.BorderSizePixel=0
-bg.Parent=s
-local box=Instance.new("Frame")
-box.AnchorPoint=Vector2.new(0.5,0.5)
-box.Position=UDim2.new(0.5,0,0.5,0)
-box.Size=UDim2.new(0.75,0,0.4,0)
-box.BackgroundColor3=Color3.fromRGB(18,18,18)
-box.BorderSizePixel=0
-box.Parent=bg
-local bc=Instance.new("UICorner")
-bc.CornerRadius=UDim.new(0,12)
-bc.Parent=box
-local bs=Instance.new("UIStroke")
-bs.Color=Color3.fromRGB(0,200,100)
-bs.Thickness=2
-bs.Parent=box
-local tl=Instance.new("TextLabel")
-tl.Position=UDim2.new(0,0,0.08,0)
-tl.Size=UDim2.new(1,0,0.2,0)
-tl.BackgroundTransparency=1
-tl.Text="Kamui Hub "..V
-tl.TextColor3=Color3.fromRGB(0,220,110)
-tl.TextScaled=true
-tl.Font=Enum.Font.GothamBold
-tl.Parent=box
-local sl=Instance.new("TextLabel")
-sl.Position=UDim2.new(0,0,0.3,0)
-sl.Size=UDim2.new(1,0,0.12,0)
-sl.BackgroundTransparency=1
-sl.Text="Selecione o idioma"
-sl.TextColor3=Color3.fromRGB(180,180,180)
-sl.TextScaled=true
-sl.Font=Enum.Font.Gotham
-sl.Parent=box
-local pb=Instance.new("TextButton")
-pb.AnchorPoint=Vector2.new(0.5,0.5)
-pb.Position=UDim2.new(0.5,0,0.52,0)
-pb.Size=UDim2.new(0.7,0,0.12,0)
-pb.BackgroundColor3=Color3.fromRGB(0,150,60)
-pb.BorderSizePixel=0
-pb.Text="Portugues"
-pb.TextColor3=Color3.new(1,1,1)
-pb.TextScaled=true
-pb.Font=Enum.Font.GothamBold
-pb.Parent=box
-local pc=Instance.new("UICorner")
-pc.CornerRadius=UDim.new(0,8)
-pc.Parent=pb
-local eb=Instance.new("TextButton")
-eb.AnchorPoint=Vector2.new(0.5,0.5)
-eb.Position=UDim2.new(0.5,0,0.7,0)
-eb.Size=UDim2.new(0.7,0,0.12,0)
-eb.BackgroundColor3=Color3.fromRGB(40,80,180)
-eb.BorderSizePixel=0
-eb.Text="English"
-eb.TextColor3=Color3.new(1,1,1)
-eb.TextScaled=true
-eb.Font=Enum.Font.GothamBold
-eb.Parent=box
-local ec=Instance.new("UICorner")
-ec.CornerRadius=UDim.new(0,8)
-ec.Parent=eb
-local bar=Instance.new("Frame")
-bar.AnchorPoint=Vector2.new(0.5,1)
-bar.Position=UDim2.new(0.5,0,0.95,0)
-bar.Size=UDim2.new(0.8,0,0.03,0)
-bar.BackgroundColor3=Color3.fromRGB(40,40,40)
-bar.BorderSizePixel=0
-bar.Parent=box
-local bc2=Instance.new("UICorner")
-bc2.CornerRadius=UDim.new(1,0)
-bc2.Parent=bar
-local fl=Instance.new("Frame")
-fl.Size=UDim2.new(0,0,1,0)
-fl.BackgroundColor3=Color3.fromRGB(0,220,110)
-fl.BorderSizePixel=0
-fl.Parent=bar
-local fc=Instance.new("UICorner")
-fc.CornerRadius=UDim.new(1,0)
-fc.Parent=fl
-local function sl2()task.spawn(function()for i=0,100,4 do fl.Size=UDim2.new(i/100,0,1,0)task.wait(0.02)end task.wait(0.2)s:Destroy()cb()end)end
-pb.MouseButton1Click:Connect(sl2)
-eb.MouseButton1Click:Connect(sl2)
-end
-
+local function readTB(tb)if not tb then return nil end for _,m in ipairs({function()return tb.Text end,function()return tb:GetText()end,function()return tb:Get()end,function()return tb.Value end})do local o,v=pcall(m)if o and type(v)=="string" and v~=""then return v end end return nil end
 local NG,NC,NO=nil,nil,0
 local function ensN()
 if NG and NG.Parent then return end
@@ -220,11 +44,11 @@ local function notify(text,color)
 pcall(function()
 ensN()
 NO=NO+1
-local cl=color or Color3.fromRGB(0,255,0)
+local cl=color or Color3.fromRGB(255,100,0)
 local f=Instance.new("Frame")
 f.LayoutOrder=NO
-f.Size=UDim2.new(1,0,0,60)
-f.BackgroundColor3=Color3.fromRGB(18,18,18)
+f.Size=UDim2.new(1,0,0,58)
+f.BackgroundColor3=Color3.fromRGB(15,5,20)
 f.BackgroundTransparency=0.05
 f.BorderSizePixel=0
 f.Parent=NC
@@ -255,7 +79,7 @@ tl.TextXAlignment=Enum.TextXAlignment.Left
 tl.Parent=f
 local cd=Instance.new("TextLabel")
 cd.Position=UDim2.new(0,14,0,30)
-cd.Size=UDim2.new(1,-20,0,24)
+cd.Size=UDim2.new(1,-20,0,22)
 cd.BackgroundTransparency=1
 cd.Text=text
 cd.TextColor3=Color3.fromRGB(230,230,230)
@@ -268,8 +92,7 @@ end)
 end
 local function ok(t)notify(t,Color3.fromRGB(0,200,100))end
 local function er(t)notify(t,Color3.fromRGB(220,60,60))end
-local function inf(t)notify(t,Color3.fromRGB(60,140,220))end
-local function readTB(tb)if not tb then return nil end for _,m in ipairs({function()return tb.Text end,function()return tb:GetText()end,function()return tb:Get()end,function()return tb.Value end})do local o,v=pcall(m)if o and type(v)=="string" and v~=""then return v end end return nil end
+local function inf(t)notify(t,Color3.fromRGB(150,50,200))end
 local function cTl()local r=RS.RE and RS.RE:FindFirstChild("1Clea1rTool1s")if r then pcall(function()r:FireServer("ClearAllTools")end)end end
 local function protS()
 local c=LP.Character
@@ -283,94 +106,25 @@ end
 end
 if r.Position.Y<-50 then r.CFrame=CFrame.new(r.Position.X,50,r.Position.Z)end
 end
-local function pickBall()
-local ch=LP.Character
-if not ch then return nil end
-local eq=ch:FindFirstChild("SoccerBall")
-if eq and eq:IsA("Tool")then return eq end
+local function gB()
+local w=workspace:FindFirstChild("WorkspaceCom")
+if not w then return nil end
+local bf=w:FindFirstChild("001_SoccerBalls")
+if not bf then return nil end
 local bp=LP.Backpack
-local inBag=bp:FindFirstChild("SoccerBall")
-if not inBag then
-local r=RS.RE and RS.RE:FindFirstChild("1Too1l")
-if r then pcall(function()r:InvokeServer("PickingTools","SoccerBall")end)end
+if not bp:FindFirstChild("SoccerBall")then local r=RS.RE and RS.RE:FindFirstChild("1Too1l")if r then pcall(function()r:InvokeServer("PickingTools","SoccerBall")end)end end
 local wt=0
 while not bp:FindFirstChild("SoccerBall")and wt<5 do task.wait(0.1)wt=wt+0.1 end
-inBag=bp:FindFirstChild("SoccerBall")
-end
-if not inBag then return nil end
-local hum=ch:FindFirstChildOfClass("Humanoid")
-if hum then pcall(function()hum:EquipTool(inBag)end)task.wait(0.3)end
-return ch:FindFirstChild("SoccerBall")or inBag
-end
-
-local mR=false
-local function spawnM(pos)
-local m=Instance.new("Part")
-m.Name="KamuiMeteor"
-m.Shape=Enum.PartType.Ball
-m.Size=Vector3.new(8,8,8)
-m.Material=Enum.Material.Neon
-m.BrickColor=BrickColor.new("Really red")
-m.CanCollide=true
-m.Position=Vector3.new(pos.X+math.random(-200,200),pos.Y+400,pos.Z+math.random(-200,200))
-m.Parent=workspace
-local fi=Instance.new("Fire")
-fi.Heat=50
-fi.Size=20
-fi.Parent=m
-local li=Instance.new("PointLight")
-li.Brightness=5
-li.Range=40
-li.Color=Color3.fromRGB(255,100,0)
-li.Parent=m
-local bv=Instance.new("BodyVelocity")
-bv.Velocity=Vector3.new(math.random(-50,50),-300,math.random(-50,50))
-bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)
-bv.Parent=m
-task.delay(8,function()if m and m.Parent then m:Destroy()end end)
-m.Touched:Connect(function()
-if m:GetAttribute("E")then return end
-m:SetAttribute("E",true)
-local ex=Instance.new("Explosion")
-ex.Position=m.Position
-ex.BlastRadius=20
-ex.BlastPressure=50000
-ex.Parent=workspace
-if m.Parent then m:Destroy()end
-end)
-end
-local function stM(tgt)
-if mR then return end
-mR=true
-task.spawn(function()
-while mR do
-local pos
-if tgt and tgt.Character then
-local hrp=tgt.Character:FindFirstChild("HumanoidRootPart")
-if hrp then pos=hrp.Position end
-end
-if not pos then pos=Vector3.new(math.random(-300,300),100,math.random(-300,300))end
-spawnM(pos)
-task.wait(0.5)
-end
-end)
-end
-local function stopM()mR=false for _,o in ipairs(workspace:GetChildren())do if o.Name=="KamuiMeteor"then o:Destroy()end end end
-local function crP(tgt)
-if not tgt then return end
-local RE=RS:FindFirstChild("RE")
-if not RE then return end
-task.spawn(function()for i=1,500 do local r=RE:FindFirstChild("1Playe1rTrigge1rEven1t")if r then pcall(function()r:FireServer(string.rep("A",10000),tgt,string.rep("B",10000))end)end if i%50==0 then task.wait()end end end)
-task.spawn(function()for i=1,200 do if tgt.Character then local hrp=tgt.Character:FindFirstChild("HumanoidRootPart")if hrp then hrp.CFrame=CFrame.new(math.random(-10000,10000),math.random(-10000,10000),math.random(-10000,10000))end end task.wait(0.01)end end)
-end
-local function fMsg(tgt,msg)
-if not tgt or not msg or msg==""then return end
-local RE=RS:FindFirstChild("RE")
-if not RE then return end
-for _,rn in ipairs({"1Cha1t","1Cha1tEven1t","1Se1ndMes1sage","1Mes1sage","1RPCha1t"})do
-local r=RE:FindFirstChild(rn)
-if r then pcall(function()r:FireServer(msg,tgt)end)pcall(function()r:FireServer(tgt,msg)end)end
-end
+if not bp:FindFirstChild("SoccerBall")then return nil end
+bp.SoccerBall.Parent=LP.Character
+wt=0
+while not bf:FindFirstChild("Soccer"..LP.Name)and wt<5 do task.wait(0.1)wt=wt+0.1 end
+local B=bf:FindFirstChild("Soccer"..LP.Name)
+if not B then return nil end
+B.CanCollide=false
+B.Massless=true
+B.CustomPhysicalProperties=PhysicalProperties.new(0.001,0,0,0,0)
+return B
 end
 local function cBR()
 local e=workspace:FindFirstChild("KamuiBackrooms")
@@ -394,7 +148,7 @@ fl.Name="Floor"
 fl.Size=Vector3.new(cs,1,cs)
 fl.Position=o+Vector3.new((x-gs/2-0.5)*cs,0,(z-gs/2-0.5)*cs)
 fl.Anchored=true
-fl.BrickColor=BrickColor.new("Cool yellow")
+fl.BrickColor=BrickColor.new("Really black")
 fl.Material=Enum.Material.Fabric
 fl.Parent=f
 end end
@@ -403,12 +157,12 @@ ce.Name="Ceiling"
 ce.Size=Vector3.new(gs*cs,1,gs*cs)
 ce.Position=o+Vector3.new(0,wh,0)
 ce.Anchored=true
-ce.BrickColor=BrickColor.new("Cool yellow")
+ce.BrickColor=BrickColor.new("Royal purple")
 ce.Material=Enum.Material.SmoothPlastic
 ce.Parent=f
 for x=1,gs do for z=1,gs do
-if h[x][z]then local w=Instance.new("Part")w.Name="Wall"w.Size=Vector3.new(cs+wt,wh,wt)w.Position=o+Vector3.new((x-gs/2-0.5)*cs,wh/2,(z-gs/2)*cs)w.Anchored=true w.BrickColor=BrickColor.new("Cool yellow")w.Material=Enum.Material.SmoothPlastic w.Parent=f end
-if v[x][z]then local w=Instance.new("Part")w.Name="Wall"w.Size=Vector3.new(wt,wh,cs+wt)w.Position=o+Vector3.new((x-gs/2)*cs,wh/2,(z-gs/2-0.5)*cs)w.Anchored=true w.BrickColor=BrickColor.new("Cool yellow")w.Material=Enum.Material.SmoothPlastic w.Parent=f end
+if h[x][z]then local w=Instance.new("Part")w.Name="Wall"w.Size=Vector3.new(cs+wt,wh,wt)w.Position=o+Vector3.new((x-gs/2-0.5)*cs,wh/2,(z-gs/2)*cs)w.Anchored=true w.BrickColor=BrickColor.new("Royal purple")w.Material=Enum.Material.SmoothPlastic w.Parent=f end
+if v[x][z]then local w=Instance.new("Part")w.Name="Wall"w.Size=Vector3.new(wt,wh,cs+wt)w.Position=o+Vector3.new((x-gs/2)*cs,wh/2,(z-gs/2-0.5)*cs)w.Anchored=true w.BrickColor=BrickColor.new("Royal purple")w.Material=Enum.Material.SmoothPlastic w.Parent=f end
 end end
 for i=1,12 do
 local lp=Instance.new("Part")
@@ -418,12 +172,12 @@ lp.Position=o+Vector3.new(math.random(-gs*18,gs*18),wh-1.5,math.random(-gs*18,gs
 lp.Anchored=true
 lp.CanCollide=false
 lp.Material=Enum.Material.Neon
-lp.BrickColor=BrickColor.new("Toothpaste")
+lp.BrickColor=BrickColor.new("Bright orange")
 lp.Parent=f
 local pl=Instance.new("PointLight")
-pl.Brightness=3
+pl.Brightness=4
 pl.Range=60
-pl.Color=Color3.fromRGB(255,250,180)
+pl.Color=Color3.fromRGB(255,120,0)
 pl.Parent=lp
 end
 end
@@ -439,7 +193,76 @@ task.wait(0.1)
 end
 end)
 end
-
+local mR=false
+local function spawnM(pos)
+local m=Instance.new("Part")
+m.Name="KamuiMeteor"
+m.Shape=Enum.PartType.Ball
+m.Size=Vector3.new(8,8,8)
+m.Material=Enum.Material.Neon
+m.BrickColor=BrickColor.new("Bright orange")
+m.CanCollide=true
+m.Position=Vector3.new(pos.X+math.random(-200,200),pos.Y+400,pos.Z+math.random(-200,200))
+m.Parent=workspace
+local fi=Instance.new("Fire")
+fi.Heat=50
+fi.Size=20
+fi.Color=Color3.fromRGB(255,100,0)
+fi.Parent=m
+local li=Instance.new("PointLight")
+li.Brightness=6
+li.Range=50
+li.Color=Color3.fromRGB(255,120,0)
+li.Parent=m
+local bv=Instance.new("BodyVelocity")
+bv.Velocity=Vector3.new(math.random(-50,50),-300,math.random(-50,50))
+bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)
+bv.Parent=m
+task.delay(8,function()if m and m.Parent then m:Destroy()end end)
+m.Touched:Connect(function()
+if m:GetAttribute("E")then return end
+m:SetAttribute("E",true)
+local ex=Instance.new("Explosion")
+ex.Position=m.Position
+ex.BlastRadius=20
+ex.BlastPressure=50000
+ex.Parent=workspace
+if m.Parent then m:Destroy()end
+end)
+end
+local function stM(t)
+if mR then return end
+mR=true
+task.spawn(function()
+while mR do
+local pos
+if t and t.Character then
+local h=t.Character:FindFirstChild("HumanoidRootPart")
+if h then pos=h.Position end
+end
+if not pos then pos=Vector3.new(math.random(-300,300),100,math.random(-300,300))end
+spawnM(pos)
+task.wait(0.5)
+end
+end)
+end
+local function stopM()mR=false for _,o in ipairs(workspace:GetChildren())do if o.Name=="KamuiMeteor"then o:Destroy()end end end
+local function crP(t)
+if not t then return end
+local RE=RS:FindFirstChild("RE")
+if not RE then return end
+task.spawn(function()for i=1,500 do local r=RE:FindFirstChild("1Playe1rTrigge1rEven1t")if r then pcall(function()r:FireServer(string.rep("A",10000),t,string.rep("B",10000))end)end if i%50==0 then task.wait()end end end)
+task.spawn(function()for i=1,200 do if t.Character then local h=t.Character:FindFirstChild("HumanoidRootPart")if h then h.CFrame=CFrame.new(math.random(-10000,10000),math.random(-10000,10000),math.random(-10000,10000))end end task.wait(0.01)end end)
+end
+local function fMsg(t,msg)
+if not t or not msg or msg==""then return end
+local RE=RS:FindFirstChild("RE")
+if not RE then return end
+for _,rn in ipairs({"1Cha1t","1Cha1tEven1t","1Se1ndMes1sage","1Mes1sage","1RPCha1t"})do
+local r=RE:FindFirstChild(rn)
+if r then pcall(function()r:FireServer(msg,t)end)pcall(function()r:FireServer(t,msg)end)end
+end
+end
 local function aTag(p)
 if not p then return end
 local c=p.Character
@@ -452,27 +275,27 @@ if o then o:Destroy()end
 local a=isAdm(p)
 local bb=Instance.new("BillboardGui")
 bb.Name="KamuiTag"
-bb.Size=UDim2.new(0,150,0,28)
+bb.Size=UDim2.new(0,160,0,30)
 bb.StudsOffset=Vector3.new(0,2.5,0)
 bb.AlwaysOnTop=true
 bb.Parent=h
 local fr=Instance.new("Frame")
 fr.Size=UDim2.new(1,0,1,0)
-fr.BackgroundColor3=Color3.fromRGB(0,0,0)
+fr.BackgroundColor3=Color3.fromRGB(15,5,20)
 fr.BorderSizePixel=0
 fr.Parent=bb
 local fc=Instance.new("UICorner")
-fc.CornerRadius=UDim.new(0,6)
+fc.CornerRadius=UDim.new(0,8)
 fc.Parent=fr
 local fs=Instance.new("UIStroke")
-fs.Color=Color3.fromRGB(255,255,255)
-fs.Thickness=2
+fs.Color=a and Color3.fromRGB(255,100,0)or Color3.fromRGB(150,50,200)
+fs.Thickness=2.5
 fs.Parent=fr
 local lb=Instance.new("TextLabel")
 lb.Size=UDim2.new(1,0,1,0)
 lb.BackgroundTransparency=1
-lb.Text=a and"{admin}"or"{user}"
-lb.TextColor3=a and Color3.fromRGB(255,80,80)or Color3.fromRGB(255,255,255)
+lb.Text=a and"🎃 {ADMIN}"or"🕸️ {USER}"
+lb.TextColor3=a and Color3.fromRGB(255,100,0)or Color3.fromRGB(150,50,200)
 lb.TextScaled=true
 lb.Font=Enum.Font.GothamBold
 lb.Parent=fr
@@ -493,7 +316,6 @@ if h then local t=h:FindFirstChild("KamuiTag")if t then t:Destroy()end end
 end
 end
 end
-
 local espOn=false
 local espConns={}
 local function createESP(p)
@@ -514,8 +336,8 @@ fr.Parent=bb
 local nm=Instance.new("TextLabel")
 nm.Size=UDim2.new(1,0,0.5,0)
 nm.BackgroundTransparency=1
-nm.Text=p.Name
-nm.TextColor3=Color3.fromRGB(255,255,255)
+nm.Text="🎃 "..p.Name
+nm.TextColor3=Color3.fromRGB(255,100,0)
 nm.TextScaled=true
 nm.TextStrokeTransparency=0
 nm.TextStrokeColor3=Color3.fromRGB(0,0,0)
@@ -526,7 +348,7 @@ dst.Position=UDim2.new(0,0,0.5,0)
 dst.Size=UDim2.new(1,0,0.5,0)
 dst.BackgroundTransparency=1
 dst.Text="0 studs"
-dst.TextColor3=Color3.fromRGB(0,255,100)
+dst.TextColor3=Color3.fromRGB(150,50,200)
 dst.TextScaled=true
 dst.TextStrokeTransparency=0
 dst.TextStrokeColor3=Color3.fromRGB(0,0,0)
@@ -559,7 +381,6 @@ if e then e:Destroy()end
 end
 end
 end
-
 local antiLagOn=false
 local antiLagConns={}
 local function startAntiLag()
@@ -571,11 +392,7 @@ if obj:IsA("ParticleEmitter")or obj:IsA("Trail")or obj:IsA("Smoke")or obj:IsA("F
 pcall(function()obj.Enabled=false end)
 end
 end
-pcall(function()
-game.Lighting.GlobalShadows=false
-game.Lighting.FogEnd=100000
-game.Lighting.Brightness=2
-end)
+pcall(function()game.Lighting.GlobalShadows=false;game.Lighting.FogEnd=100000;game.Lighting.Brightness=2 end)
 end
 process()
 table.insert(antiLagConns,workspace.DescendantAdded:Connect(function(obj)
@@ -592,17 +409,86 @@ for _,c in ipairs(antiLagConns)do pcall(function()c:Disconnect()end)end
 antiLagConns={}
 pcall(function()settings().Rendering.QualityLevel=10 end)
 end
-
-local function setupAutoRejoin()
-local savedJob=game.JobId
-local savedPlace=game.PlaceId
-LP.AncestryChanged:Connect(function()
-if not LP.Parent then
-pcall(function()TS:TeleportToPlaceInstance(savedPlace,savedJob,LP)end)
+local antiFlingConn=nil
+local function startAntiFling()
+if antiFlingConn then antiFlingConn:Disconnect()end
+antiFlingConn=R.Heartbeat:Connect(function()
+local c=LP.Character
+if not c then return end
+local r=c:FindFirstChild("HumanoidRootPart")
+if not r then return end
+for _,ch in ipairs(r:GetChildren())do
+if ch:IsA("BodyVelocity")or ch:IsA("BodyPosition")or ch:IsA("BodyGyro")or ch:IsA("AlignPosition")or ch:IsA("AlignOrientation")or ch:IsA("Torque")or ch:IsA("BodyThrust")or ch:IsA("BodyForce")or ch:IsA("RocketPropulsion")then
+if ch.Name~="KamuiKeepAlive"then pcall(function()ch:Destroy()end)end
 end
+end
+local h=c:FindFirstChildOfClass("Humanoid")
+if h and h.Sit and h.SeatPart then
+local isCouch=false
+local check=h.SeatPart
+for i=1,5 do
+if not check then break end
+if check.Name=="Couch"or check.Name=="Chaos.Couch"or(check:IsA("Tool")and check.Name:lower():find("couch"))then
+isCouch=true
+break
+end
+check=check.Parent
+end
+if isCouch then
+pcall(function()h.Sit=false end)
+pcall(function()h:ChangeState(Enum.HumanoidStateType.GettingUp)end)
+end
+end
+if r.Velocity.Magnitude>500 then
+pcall(function()r.Velocity=Vector3.new(0,0,0)end)
+pcall(function()r.RotVelocity=Vector3.new(0,0,0)end)
+end
+end)
+end
+local function stopAntiFling()if antiFlingConn then antiFlingConn:Disconnect()antiFlingConn=nil end end
+local function setupAutoRejoin()
+local sj=game.JobId
+local sp=game.PlaceId
+LP.AncestryChanged:Connect(function()
+if not LP.Parent then pcall(function()TS:TeleportToPlaceInstance(sp,sj,LP)end)end
 end)
 task.spawn(function()
 while true do
 task.wait(5)
 if not game:GetService("Players").LocalPlayer or not game:GetService("Players").LocalPlayer.Parent then
-pcall(function()TS:TeleportToPlaceInstance(saved
+pcall(function()TS:TeleportToPlaceInstance(sp,sj,LP)end)
+break
+end
+end
+end)
+end
+
+print("[K] gui")
+
+local function buildAdmin()
+local AW=lib:MakeWindow({Title="🎃 Kamui Admin ("..V..")",SubTitle="Painel Sombrio",SaveFolder="kamui_admin"})
+AW:AddMinimizeButton({Button={Image="rbxassetid://71014873973869",BackgroundTransparency=0},Corner={CornerRadius=UDim.new(35,1)}})
+local at,mt=nil,nil
+local function gN()local n={}for _,p in ipairs(P:GetPlayers())do if p~=LP then local tg=(p:GetAttribute("KamuiHubUser")==true)and" [HUB]"or""table.insert(n,p.Name..tg)end end if #n==0 then table.insert(n,"Nenhum")end return n end
+local function gNN()local n={}for _,p in ipairs(P:GetPlayers())do if p~=LP then table.insert(n,p.Name)end end if #n==0 then table.insert(n,"Nenhum")end return n end
+local function cl(s)return(s:gsub(" %[HUB%]",""))end
+local function gT()if not at then return nil end return P:FindFirstChild(cl(at))end
+local function gMT()if not mt then return nil end return P:FindFirstChild(mt)end
+local TT=AW:MakeTab({"Troll","target"})
+local dd=TT:AddDropdown({Name="Alvo",Options=gN(),Default="",Callback=function(v)if v and v~="Nenhum"and v~=""then at=v else at=nil end end})
+TT:AddButton({"Atualizar",function()pcall(function()dd:Set(gN())end)end})
+TT:AddButton({"[Hub] Fling",function()local t=gT()if not t then er("Selecione alvo")return end local o,e=reqHub(t)if not o then er(e)return end local hrp=t.Character and t.Character:FindFirstChild("HumanoidRootPart")if hrp then pcall(function()local bv=Instance.new("BodyVelocity")bv.Velocity=Vector3.new(9e8,9e8,9e8)bv.MaxForce=Vector3.new(math.huge,math.huge,math.huge)bv.Parent=hrp end)ok("Fling em "..t.Name)end end})
+TT:AddButton({"[Hub] TP",function()local t=gT()if not t then return end local o,e=reqHub(t)if not o then er(e)return end local hrp=t.Character and t.Character:FindFirstChild("HumanoidRootPart")local mh=LP.Character and LP.Character:FindFirstChild("HumanoidRootPart")if hrp and mh then mh.CFrame=hrp.CFrame end end})
+TT:AddButton({"Kick",function()local t=gT()if not t then er("Selecione alvo")return end local RE=RS:FindFirstChild("RE")if RE then local r=RE:FindFirstChild("1Ki1ck")if r then pcall(function()r:FireServer(t)end)end local rp=RE:FindFirstChild("1Playe1rTrigge1rEven1t")if rp then pcall(function()rp:FireServer("Kick",t)end)pcall(function()rp:FireServer("KickPlayer",t)end)end end ok("Kick -> "..t.Name)end})
+TT:AddButton({"Kill",function()local t=gT()if not t or not t.Character then er("Alvo invalido")return end local h=t.Character:FindFirstChildOfClass("Humanoid")if h then h.Health=0 ok("Kill -> "..t.Name)end end})
+TT:AddButton({"Crashar",function()local t=gT()if not t then er("Selecione alvo")return end local o,e=reqHub(t)if not o then er(e)return end crP(t)er("Crash -> "..t.Name)end})
+TT:AddSection({"Mensagem"})
+local msgI=nil
+TT:AddTextBox({Name="Mensagem",PlaceholderText="...",Callback=function(v)msgI=v end})
+TT:AddButton({"Enviar como Alvo",function()local t=gT()if not t then er("Selecione alvo")return end if not msgI or msgI==""then er("Digite msg")return end fMsg(t,msgI)ok("Msg -> "..t.Name)end})
+local MT=AW:MakeTab({"Mapas","map"})
+MT:AddSection({"Backrooms Halloween"})
+MT:AddParagraph({"Backrooms","Y="..BY})
+local md=MT:AddDropdown({Name="Player",Options=gNN(),Default="",Callback=function(v)if v and v~="Nenhum"and v~=""then mt=v else mt=nil end end})
+MT:AddButton({"Atualizar",function()pcall(function()md:Set(gNN())end)end})
+MT:AddButton({"Me levar p/ backrooms",function()if not workspace:FindFirstChild("KamuiBackrooms")then cBR()task.wait(0.5)end tpBR(LP)ok("Voce foi
